@@ -1,0 +1,153 @@
+<% layout("/layouts/boilerplate.ejs") %>
+<section
+  class="event-promo-section position-relative d-flex align-items-center justify-content-center text-white text-center"
+  style="
+    background: url('/images/event_bg.jpg') no-repeat center center;
+    background-size: cover;
+    min-height: 60vh;
+  "
+>
+  <div
+    class="position-absolute top-0 start-0 end-0 bottom-0"
+    style="background-color: rgba(0, 0, 0, 0.55); z-index: 1"
+  ></div>
+  <div class="position-relative" style="z-index: 2; padding: 1rem">
+    <h3 class="display-5 fw-bold mb-4">EXPLORE THE CURRENT<br />EVENT</h3>
+
+    <a
+      href="/currentevents/details"
+      class="btn btn-lg px-5 shadow-sm"
+      style="background-color: #28c3f5; color: white; border-color: #28c3f5"
+      >Explore</a
+    >
+  </div>
+</section>
+
+<section
+  class="upcoming-events-section py-5"
+  style="background: linear-gradient(to bottom, #80deea, #a0e9fc)"
+>
+  <div class="container text-center mb-5">
+    <a
+      href="/currentevents/new"
+      class="btn btn-info btn-lg text-white rounded shadow-sm px-5 py-2 fw-medium border border-white"
+      role="button"
+      style="
+        --bs-btn-bg: #00c3ff;
+        --bs-btn-border-color: #fff;
+        --bs-btn-hover-bg: #00a8e0;
+        --bs-btn-hover-border-color: #fff;
+      "
+    >
+      Create New
+    </a>
+  </div>
+
+  <div class="container">
+    <h2 class="text-center fw-bold mb-5 display-4 text-white">
+      Upcoming <span class="text-dark-emphasis">Events</span>
+    </h2>
+
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mb-5">
+      <% for(let i = 0; i < 6; i++) { %>
+      <div class="col">
+        <div class="card h-100 border-0 shadow-sm rounded-3 overflow-hidden">
+          <img src="/images/sala.jpg" class="card-img-top" alt="Event Image" />
+          <div class="card-body">
+            <a
+              href=""
+              class="text-decoration-none text-dark shadow-sm px-5 py-2 fw-medium"
+            >
+              <h5 class="card-title fw-bold mb-2">
+                Public Speaking Pros 2.0
+                <i class="fa-solid fa-eye eye-icon"></i>
+              </h5>
+            </a>
+
+            <p class="card-text text-muted small mb-3">
+              We are immensely grateful to Photoflick, our official photographic
+              partner for Public Speaking Pros 2.0
+            </p>
+          </div>
+          <div
+            class="card-footer bg-white border-0 pt-0 pb-3 d-flex justify-content-between align-items-center"
+          >
+            <small class="text-muted d-flex align-items-center">
+              <i class="bi bi-calendar-event me-1"></i> April 10, 2025
+            </small>
+            <small class="text-muted d-flex align-items-center">
+              <i class="bi bi-clock me-1"></i> 5:00 PM
+            </small>
+          </div>
+        </div>
+      </div>
+      <% } %>
+    </div>
+
+    <div class="text-center">
+      <button
+        type="button"
+        class="btn btn-primary rounded-pill px-5 py-2 fs-5 fw-medium"
+        style="background-color: #4d00ff; border-color: #4d00ff"
+      >
+        Load More...
+      </button>
+    </div>
+  </div>
+</section>
+<section
+  class="upcoming-events-section py-5"
+  style="background: linear-gradient(to bottom, #80deea, #a0e9fc)"
+>
+  <div class="container">
+    <h2 class="text-center fw-bold mb-5 display-4 text-white">
+      Previous <span class="text-dark-emphasis">Events</span>
+    </h2>
+
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mb-5">
+      <% for(let i = 0; i < 3; i++) { %>
+      <div class="col">
+        <div class="card h-100 border-0 shadow-sm rounded-3 overflow-hidden">
+          <img src="/images/sala.jpg" class="card-img-top" alt="Event Image" />
+          <div class="card-body">
+            <a
+              href="/previousevents/details"
+              class="text-decoration-none text-dark shadow-sm px-5 py-2 fw-medium"
+            >
+              <h5 class="card-title fw-bold mb-2">
+                Public Speaking Pros 2.0
+                <i class="fa-solid fa-eye eye-icon"></i>
+              </h5>
+            </a>
+
+            <p class="card-text text-muted small mb-3">
+              We are immensely grateful to Photoflick, our official photographic
+              partner for Public Speaking Pros 2.0
+            </p>
+          </div>
+          <div
+            class="card-footer bg-white border-0 pt-0 pb-3 d-flex justify-content-between align-items-center"
+          >
+            <small class="text-muted d-flex align-items-center">
+              <i class="bi bi-calendar-event me-1"></i> April 10, 2025
+            </small>
+            <small class="text-muted d-flex align-items-center">
+              <i class="bi bi-clock me-1"></i> 5:00 PM
+            </small>
+          </div>
+        </div>
+      </div>
+      <% } %>
+    </div>
+
+    <div class="text-center">
+      <button
+        type="button"
+        class="btn btn-primary rounded-pill px-5 py-2 fs-5 fw-medium"
+        style="background-color: #4d00ff; border-color: #4d00ff"
+      >
+        Load More...
+      </button>
+    </div>
+  </div>
+</section>

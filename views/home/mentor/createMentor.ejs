@@ -1,0 +1,92 @@
+<% layout("/layouts/boilerplate.ejs") %>
+
+<section
+  class="create-mentor-section py-5"
+  style="
+    background: linear-gradient(to bottom, #4dd0e1, #80deea);
+    min-height: 80vh;
+  "
+>
+  <div class="container">
+    <h2 class="text-center text-white fw-bold mb-5">Create New Mentor</h2>
+
+    <div class="row justify-content-center">
+      <div class="col-md-8 col-lg-6">
+        <form action="/mentors" method="POST">
+          <div class="mb-3">
+            <label
+              for="mentorNameStatic"
+              class="form-label text-white fw-medium"
+              >Mentor Name</label
+            >
+            <input
+              type="text"
+              class="form-control form-control-lg rounded"
+              id="mentorNameStatic"
+              name="mentor_name"
+              placeholder="Enter mentor name"
+              required
+            />
+          </div>
+
+          <div class="mb-3">
+            <label
+              for="mentorQualificationStatic"
+              class="form-label text-white fw-medium"
+              >Mentor Qualification</label
+            >
+            <input
+              type="text"
+              class="form-control form-control-lg rounded"
+              id="mentorQualificationStatic"
+              name="qualification"
+              placeholder="Enter mentor qualification"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <label
+              for="mentorDescriptionStatic"
+              class="form-label text-white fw-medium"
+              >Mentor Description</label
+            >
+            <input
+              type="text"
+              class="form-control form-control-lg rounded"
+              id="mentorDescriptionStatic"
+              name="description"
+              placeholder="Enter mentor description"
+              required
+            />
+          </div>
+
+          <div class="mb-4">
+            <label
+              for="mentorEmailStatic"
+              class="form-label text-white fw-medium"
+              >Mentor Email</label
+            >
+            <input
+              type="email"
+              class="form-control form-control-lg rounded"
+              id="mentorEmailStatic"
+              name="email"
+              placeholder="Enter mentor email"
+              required
+            />
+          </div>
+
+          <div class="d-grid">
+            <button
+              type="submit"
+              class="btn btn-lg shadow-sm"
+              style="background-color: #28c3f5; color: white; border: none"
+            >
+              Create Mentor
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

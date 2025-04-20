@@ -1,0 +1,91 @@
+<% layout("/layouts/boilerplate.ejs") %>
+
+<section
+  class="registration-section d-flex align-items-center justify-content-center py-5 min-vh-100"
+  style="background: linear-gradient(to bottom, #4ac7de, #6de1f0)"
+>
+  <div class="container text-center">
+    <h1
+      class="text-white fw-bold mb-5 display-4"
+      style="color: #fff !important"
+    >
+      Registration
+    </h1>
+
+    <div class="row justify-content-center">
+      <div class="col-md-8 col-lg-6">
+        <form action="/registration/confirm" method="POST">
+          <div class="mb-3">
+            <input
+              type="text"
+              class="form-control form-control-lg rounded text-center"
+              value="MD TAJBID HOSSAIN BAPPI"
+              readonly
+              style="background-color: white; border: none; color: #333"
+            />
+          </div>
+
+          <div class="mb-3">
+            <input
+              type="text"
+              class="form-control form-control-lg rounded text-center"
+              value="230235"
+              readonly
+              style="background-color: white; border: none; color: #333"
+            />
+          </div>
+
+          <div class="mb-3">
+            <input
+              type="text"
+              class="form-control form-control-lg rounded text-center"
+              value="Computer Science & Engineering Discipline"
+              readonly
+              style="background-color: white; border: none; color: #333"
+            />
+          </div>
+
+          <div class="mb-3">
+            <input
+              type="tel"
+              class="form-control form-control-lg rounded text-center"
+              value="01738166031"
+              readonly
+              style="background-color: white; border: none; color: #333"
+            />
+          </div>
+
+          <div class="mb-3">
+            <input
+              type="email"
+              class="form-control form-control-lg rounded text-center"
+              value="230235@ku.ac.bd"
+              readonly
+              style="background-color: white; border: none; color: #333"
+            />
+          </div>
+
+          <div class="mb-4">
+            <input
+              type="text"
+              class="form-control form-control-lg rounded text-center"
+              value="Jashore,Khulna"
+              readonly
+              style="background-color: white; border: none; color: #333"
+            />
+          </div>
+
+          <div class="d-grid gap-2 col-6 mx-auto">
+            <button
+              type="submit"
+              class="btn btn-info btn-lg shadow-sm text-white fw-medium border-0"
+              style="background-color: #00c3ff; padding: 0.75rem 1rem"
+            >
+              Confirm
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

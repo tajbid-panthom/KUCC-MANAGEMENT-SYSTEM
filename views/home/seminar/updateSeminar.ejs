@@ -1,0 +1,117 @@
+<% layout("/layouts/boilerplate.ejs") %>
+
+<section
+  class="update-seminar-section d-flex align-items-center justify-content-center py-5 min-vh-100 bg-info bg-gradient"
+>
+  <div class="container">
+    <h2 class="text-center text-white fw-bold mb-5">Update Seminar</h2>
+
+    <div class="row justify-content-center">
+      <div class="col-md-8 col-lg-7">
+        <form
+          action="/seminars/<%=seminar.session_id %>?_method=PUT"
+          method="POST"
+        >
+          <div class="mb-3">
+            <label
+              for="seminarTypeInput"
+              class="form-label text-white fw-medium"
+              >Seminar Type</label
+            >
+            <input
+              type="text"
+              class="form-control form-control-lg rounded"
+              id="seminarTypeInput"
+              name="session_type"
+              placeholder="Seminar type"
+              required
+              value="<%=seminar.session_type %>"
+            />
+          </div>
+
+          <div class="mb-3">
+            <label
+              for="seminarDescriptionInput"
+              class="form-label text-white fw-medium"
+              >Seminar Description</label
+            >
+            <input
+              type="text"
+              class="form-control form-control-lg rounded"
+              id="seminarDescriptionInput"
+              name="description"
+              placeholder="Seminar description"
+              required
+              value="<%=seminar.description %>"
+            />
+          </div>
+
+          <div class="mb-3">
+            <label
+              for="seminarLinkInput"
+              class="form-label text-white fw-medium"
+              >Seminar Session Link</label
+            >
+            <input
+              type="text"
+              class="form-control form-control-lg rounded"
+              id="seminarLinkInput"
+              name="counseling_link"
+              placeholder="Seminar session joining link"
+              required
+              value="<%=seminar.counseling_link %>"
+            />
+          </div>
+
+          <div class="row mb-4">
+            <div class="col-md-6 mb-3 mb-md-0">
+              <label
+                for="seminarTimeInput"
+                class="form-label text-white fw-medium"
+                >Enter Time</label
+              >
+              <input
+                type="time"
+                class="form-control form-control-lg rounded"
+                id="seminarTimeInput"
+                name="time"
+                placeholder="Start time"
+                required
+                value="<%=seminar.time %>"
+              />
+            </div>
+            <div class="col-md-6">
+              <label
+                for="seminarDateInput"
+                class="form-label text-white fw-medium"
+                >Enter Date</label
+              >
+              <input
+                type="date"
+                class="form-control form-control-lg rounded"
+                id="seminarDateInput"
+                name="date"
+                required
+                value="<%= seminar.date %>"
+              />
+            </div>
+          </div>
+
+          <div class="d-grid">
+            <button
+              type="submit"
+              class="btn btn-info btn-lg shadow-sm text-white py-2 fw-medium border border-white"
+              style="
+                --bs-btn-border-color: #fff;
+                --bs-btn-hover-bg: #0ca5c9;
+                --bs-btn-hover-border-color: #fff;
+              "
+            >
+              Update
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

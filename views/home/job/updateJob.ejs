@@ -1,0 +1,112 @@
+<% layout("/layouts/boilerplate.ejs") %>
+
+<section
+  class="update-job-section d-flex align-items-center justify-content-center min-vh-100 bg-info bg-gradient"
+>
+  <div class="container">
+    <h2 class="text-center text-white fw-bold mb-5 display-5">Update Job</h2>
+
+    <div class="row justify-content-center">
+      <div class="col-md-8 col-lg-7">
+        <form action="/jobs/STATIC_PLACEHOLDER_ID?_method=PUT" method="POST">
+          <div class="mb-3">
+            <label for="jobTitleInput" class="form-label text-white fw-medium"
+              >Job Title</label
+            >
+            <input
+              type="text"
+              class="form-control form-control-lg rounded"
+              id="jobTitleInput"
+              name="jobTitle"
+              placeholder="Job role"
+              required
+              value=""
+            />
+          </div>
+
+          <div class="mb-3">
+            <label
+              for="companyNameInput"
+              class="form-label text-white fw-medium"
+              >Company Name</label
+            >
+            <input
+              type="text"
+              class="form-control form-control-lg rounded"
+              id="companyNameInput"
+              name="companyName"
+              placeholder="Enter your company name"
+              required
+              value=""
+            />
+          </div>
+
+          <div class="mb-3">
+            <label
+              for="jobDescriptionInput"
+              class="form-label text-white fw-medium"
+              >Job Description</label
+            >
+            <textarea
+              class="form-control form-control-lg rounded"
+              id="jobDescriptionInput"
+              name="jobDescription"
+              rows="4"
+              placeholder="Enter job description"
+              required
+            ></textarea>
+          </div>
+
+          <div class="row mb-4">
+            <div class="col-md-6 mb-3 mb-md-0">
+              <label for="salaryInput" class="form-label text-white fw-medium"
+                >Salary</label
+              >
+              <select
+                class="form-select form-select-lg rounded"
+                id="salaryInput"
+                name="salary"
+                required
+              >
+                <option selected disabled value="">Enter your salary</option>
+                <option value="20000-30000">$20,000 - $30,000</option>
+                <option value="30000-40000">$30,000 - $40,000</option>
+                <option value="40000-50000">$40,000 - $50,000</option>
+                <option value="50000+">$50,000+</option>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <label for="locationInput" class="form-label text-white fw-medium"
+                >Location</label
+              >
+              <input
+                type="text"
+                class="form-control form-control-lg rounded"
+                id="locationInput"
+                name="location"
+                placeholder="Enter your location"
+                required
+                value=""
+              />
+            </div>
+          </div>
+
+          <div class="d-grid">
+            <button
+              type="submit"
+              class="btn btn-info btn-lg shadow-sm text-white py-2 fw-medium border border-white"
+              style="
+                --bs-btn-bg: #00c3ff;
+                --bs-btn-border-color: #fff;
+                --bs-btn-hover-bg: #00a8e0;
+                --bs-btn-hover-border-color: #fff;
+              "
+            >
+              Update
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

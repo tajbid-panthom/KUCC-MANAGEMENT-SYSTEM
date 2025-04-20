@@ -1,0 +1,144 @@
+<% layout("/layouts/boilerplate.ejs") %>
+
+<section
+  class="update-event-section d-flex align-items-center justify-content-center py-5 min-vh-100"
+  style="background: linear-gradient(to bottom, #4ac7de, #6de1f0)"
+>
+  <div class="container">
+    <h2 class="text-center text-white fw-bold mb-5 display-5">Update Event</h2>
+
+    <div class="row justify-content-center">
+      <div class="col-md-10 col-lg-8">
+        <form action="/events/STATIC_PLACEHOLDER_ID?_method=PUT" method="POST">
+          <div class="mb-3">
+            <label for="eventTitleInput" class="form-label text-white fw-medium"
+              >Event Title</label
+            >
+            <input
+              type="text"
+              class="form-control form-control-lg rounded"
+              id="eventTitleInput"
+              name="eventTitle"
+              placeholder="Enter your mail"
+              required
+              value=""
+            />
+          </div>
+
+          <div class="mb-3">
+            <label for="eventVenueInput" class="form-label text-white fw-medium"
+              >Event Venue</label
+            >
+            <input
+              type="text"
+              class="form-control form-control-lg rounded"
+              id="eventVenueInput"
+              name="eventVenue"
+              placeholder="Enter your mail"
+              required
+              value=""
+            />
+          </div>
+
+          <div class="row mb-3">
+            <div class="col-md-6 mb-3 mb-md-0">
+              <label
+                for="startTimeInput"
+                class="form-label text-white fw-medium"
+                >Start time</label
+              >
+              <input
+                type="time"
+                class="form-control form-control-lg rounded"
+                id="startTimeInput"
+                name="startTime"
+                placeholder="Enter your mail"
+                required
+                value=""
+              />
+            </div>
+            <div class="col-md-6">
+              <label for="endTimeInput" class="form-label text-white fw-medium"
+                >End time</label
+              >
+              <input
+                type="time"
+                class="form-control form-control-lg rounded"
+                id="endTimeInput"
+                name="endTime"
+                placeholder="Enter your mail"
+                required
+                value=""
+              />
+            </div>
+          </div>
+
+          <div class="row mb-3">
+            <div class="col-md-6 mb-3 mb-md-0">
+              <label
+                for="startDateInput"
+                class="form-label text-white fw-medium"
+                >Start date</label
+              >
+              <input
+                type="date"
+                class="form-control form-control-lg rounded"
+                id="startDateInput"
+                name="startDate"
+                placeholder="Enter your mail"
+                required
+                value=""
+              />
+            </div>
+            <div class="col-md-6">
+              <label for="endDateInput" class="form-label text-white fw-medium"
+                >End date</label
+              >
+              <input
+                type="date"
+                class="form-control form-control-lg rounded"
+                id="endDateInput"
+                name="endDate"
+                placeholder="Enter your mail"
+                required
+                value=""
+              />
+            </div>
+          </div>
+
+          <div class="mb-4">
+            <label
+              for="eventDescriptionInput"
+              class="form-label text-white fw-medium"
+              >Event Description</label
+            >
+            <input
+              type="text"
+              class="form-control form-control-lg rounded"
+              id="eventDescriptionInput"
+              name="eventDescription"
+              rows="5"
+              placeholder="Type here..."
+              required
+            />
+          </div>
+
+          <div class="d-grid">
+            <button
+              type="submit"
+              class="btn btn-info btn-lg shadow-sm text-white py-2 fw-medium border border-white"
+              style="
+                --bs-btn-bg: #00c3ff;
+                --bs-btn-border-color: #fff;
+                --bs-btn-hover-bg: #00a8e0;
+                --bs-btn-hover-border-color: #fff;
+              "
+            >
+              Update
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

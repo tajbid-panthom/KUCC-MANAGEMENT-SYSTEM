@@ -1,0 +1,92 @@
+<% layout("/layouts/boilerplate.ejs") %>
+
+<section
+  class="create-job-section d-flex align-items-center justify-content-center py-5 min-vh-100 bg-info bg-gradient"
+>
+  <div class="container">
+    <h2 class="text-center text-white fw-bold mb-5">Create New Company</h2>
+
+    <div class="row justify-content-center">
+      <div class="col-md-8 col-lg-7">
+        <form action="/companies" method="POST">
+          <div class="mb-3">
+            <label
+              for="companyNameInput"
+              class="form-label text-white fw-medium"
+              >Company Name</label
+            >
+            <input
+              type="text"
+              class="form-control form-control-lg rounded"
+              id="companyNameInput"
+              name="company_name"
+              placeholder="Enter company name"
+              required
+            />
+          </div>
+
+          <div class="mb-3">
+            <label
+              for="companyTypeInput"
+              class="form-label text-white fw-medium"
+              >Company Type</label
+            >
+            <input
+              type="text"
+              class="form-control form-control-lg rounded"
+              id="companyTypeInput"
+              name="company_type"
+              placeholder="Enter Company type"
+              required
+            />
+          </div>
+
+          <div class="mb-3">
+            <label
+              for="companyDescriptionInput"
+              class="form-label text-white fw-medium"
+              >Company Description</label
+            >
+            <input
+              type="text"
+              class="form-control form-control-lg rounded"
+              id="companyDescriptionInput"
+              name="company_detail"
+              placeholder="Enter company description"
+              required
+            />
+          </div>
+
+          <div class="mb-4">
+            <label for="locationInput" class="form-label text-white fw-medium"
+              >Location</label
+            >
+            <input
+              type="text"
+              class="form-control form-control-lg rounded"
+              id="locationInput"
+              name="address"
+              placeholder="Enter your location"
+              required
+            />
+          </div>
+
+          <div class="d-grid">
+            <button
+              type="submit"
+              class="btn btn-info btn-lg shadow-sm text-white py-2 fw-medium border border-white"
+              style="
+                --bs-btn-bg: #00c3ff;
+                --bs-btn-border-color: #fff;
+                --bs-btn-hover-bg: #00a8e0;
+                --bs-btn-hover-border-color: #fff;
+              "
+            >
+              Create Company
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

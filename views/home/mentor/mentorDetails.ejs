@@ -1,0 +1,115 @@
+<% layout("/layouts/boilerplate.ejs") %>
+
+<section
+  class="mentor-profile-section d-flex flex-column"
+  style="
+    background: linear-gradient(to bottom right, #3cd1e8, #4dd0e1);
+    font-family: 'Your Sans Serif Font', sans-serif;
+  "
+>
+  <div class="container text-white pt-5 flex-grow-1 position-relative">
+    <p
+      class="text-uppercase small fw-semibold mb-2"
+      style="letter-spacing: 1px"
+    >
+      <%= mentor.qualification %>
+    </p>
+
+    <h1
+      class="display-3 mb-3 lh-sm"
+      style="font-family: 'Your Serif Font', serif; color: #000"
+    >
+      Hello, my name is
+      <br />
+      <span class="fw-light" style="color: #fff"><%=mentor.mentor_name %></span>
+    </h1>
+
+    <p class="lead mb-4 col-lg-8"><%= mentor.description %></p>
+
+    <a
+      href="mailto:<%=mentor.email %>"
+      class="btn btn-outline-light rounded py-2 px-4 mb-4"
+      style="border-width: 1px; background: #00c3ff"
+    >
+      Contact Me
+    </a>
+
+    <p>
+      Email:
+      <a href="mailto:demoteacher@gmail.com" class="text-white fw-medium"
+        ><%=mentor.email %></a
+      >
+    </p>
+  </div>
+
+  <div
+    class="container text-center pb-5 d-flex justify-content-center align-items-center gap-3"
+    style="min-height: 100px; margin-bottom: 100px"
+  >
+    <form
+      action="/mentors/<%=mentor.mentor_id %>/edit"
+      method="GET"
+      class="d-inline-block"
+    >
+      <button type="submit" class="btn btn-cyan btn-lg px-5 me-2 rounded">
+        Edit
+      </button>
+    </form>
+    <!-- remove button -->
+    <div class="d-inline-block">
+      <button
+        type="button"
+        class="btn btn-dark btn-lg px-5 rounded"
+        data-bs-toggle="modal"
+        data-bs-target="#deleteMentorModal-<%=mentor.mentor_id %>"
+      >
+        Remove
+      </button>
+
+      <div
+        class="modal fade"
+        id="deleteMentorModal-<%=mentor.mentor_id %>"
+        tabindex="-1"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Confirm</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <p>
+                Are you sure you want to remove mentor
+                <strong><%=mentor.mentor_name %></strong>?
+              </p>
+              <p class="text-danger">This action cannot be undone.</p>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Cancel
+              </button>
+
+              <form
+                action="/mentors/<%=mentor.mentor_id %>/delete?_method=DELETE"
+                method="POST"
+                class="d-inline"
+              >
+                <button type="submit" class="btn btn-danger">
+                  Confirm Remove
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,176 @@
+<% layout("/layouts/boilerplate.ejs") %>
+<section>
+  <section
+    class="seminar-promo-section position-relative d-flex align-items-center justify-content-center text-white text-center"
+    style="
+      background: url('/images/seminar.jpg') no-repeat center center;
+      background-size: cover;
+      min-height: 65vh;
+    "
+  >
+    <div
+      class="position-absolute top-0 start-0 end-0 bottom-0"
+      style="background-color: rgba(0, 0, 0, 0.6); z-index: 1"
+    ></div>
+
+    <div class="container position-relative" style="z-index: 2">
+      <h2 class="display-4 fw-bold mb-3 lh-base">
+        Connect with Khulna University<br class="d-none d-md-block" />
+        Career Club with <span style="color: #28c3f5">Seminar</span>
+      </h2>
+
+      <p class="lead mb-4">
+        Under the esteemed guidance of
+        <span style="color: #28c3f5">Assistant Professor Mr. X</span>
+      </p>
+
+      <a
+        href="/seminars/new"
+        class="btn btn-cyan btn-lg px-5 shadow-sm"
+        style="background-color: #28c3f5; color: white; border: none"
+        >Add New</a
+      >
+    </div>
+  </section>
+  <section class="seminar-section py-5 min-vh-100 bg-info bg-gradient">
+    <div class="container">
+      <div class="row g-5">
+        <div class="col-lg-7 col-md-6">
+          <div class="mb-4">
+            <h3 class="mb-2 text-white fw-medium">Seminar Type</h3>
+            <p class="h5 fw-bold" style="color: #3f3b3b">
+              Guideline for your <%= seminar.session_type %>
+            </p>
+          </div>
+          <div class="mb-5">
+            <h2 class="mb-3 text-white fw-medium">Description</h2>
+            <p class="lead fw-light" style="color: #3f3b3b">
+              <%=seminar.description %>
+            </p>
+          </div>
+
+          <%# Platform Link %>
+          <div class="mb-4">
+            <h4 class="mb-2 text-white fw-medium">Platform Link</h4>
+            <a
+              href="https://demo.zoom_calling/demo.google_meet"
+              target="_blank"
+              class="text-white fw-bold text-decoration-none"
+            >
+              <%= seminar.counseling_link %>
+            </a>
+          </div>
+
+          <div class="mb-5">
+            <h4 class="mb-2 text-white fw-medium">
+              Hours : <span style="color: #3f3b3b">9PM - 10PM</span>
+            </h4>
+          </div>
+        </div>
+
+        <div class="col-lg-5 col-md-6">
+          <div class="card bg-white text-dark shadow rounded-3 mb-5 p-3">
+            <div class="card-body text-center">
+              <h5 class="card-title fw-bold mb-3">Date & time</h5>
+              <p class="card-text mb-4">
+                <%=seminar.date %>, <%=seminar.time %>,
+              </p>
+              <a href="#" class="btn btn-info text-white w-100 py-2 fw-medium"
+                >Book now</a
+              >
+            </div>
+          </div>
+
+          <div class="text-start text-md-center">
+            <h5 class="mb-3 text-white fw-medium">Share with friends</h5>
+            <div
+              class="social-icons d-flex gap-3 justify-content-start justify-content-md-center"
+            >
+              <a href="#" target="_blank" class="text-decoration-none">
+                <i class="bi bi-facebook fs-2 text-primary"></i>
+              </a>
+              <a href="#" target="_blank" class="text-decoration-none">
+                <i class="bi bi-whatsapp fs-2 text-success"></i>
+              </a>
+              <a href="#" target="_blank" class="text-decoration-none">
+                <i class="bi bi-linkedin fs-2 text-primary"></i>
+              </a>
+              <a href="#" target="_blank" class="text-decoration-none">
+                <i class="bi bi-twitter fs-2 text-info"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-5">
+        <div class="col-12 text-center">
+          <div class="d-inline-block">
+            <button
+              type="button"
+              class="btn btn-dark btn-lg px-5 rounded"
+              data-bs-toggle="modal"
+              data-bs-target="#deleteSeminarModal-<%=seminar.session_id %>"
+            >
+              Remove
+            </button>
+
+            <div
+              class="modal fade"
+              id="deleteSeminarModal-<%=seminar.session_id %>"
+              tabindex="-1"
+            >
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title">Confirm</h5>
+                    <button
+                      type="button"
+                      class="btn-close"
+                      data-bs-dismiss="modal"
+                    ></button>
+                  </div>
+                  <div class="modal-body">
+                    <p>
+                      Are you sure you want to remove this seminar
+                      <strong><%=seminar.session_type %></strong>?
+                    </p>
+                    <p class="text-danger">This action cannot be undone.</p>
+                  </div>
+                  <div class="modal-footer">
+                    <button
+                      type="button"
+                      class="btn btn-secondary"
+                      data-bs-dismiss="modal"
+                    >
+                      Cancel
+                    </button>
+
+                    <form
+                      action="/seminars/<%=seminar.session_id %>/delete?_method=DELETE"
+                      method="POST"
+                      class="d-inline"
+                    >
+                      <button type="submit" class="btn btn-danger">
+                        Confirm
+                      </button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <form
+            action="/seminars/<%=seminar.session_id %>/edit"
+            method="GET"
+            class="d-inline-block"
+          >
+            <button type="submit" class="btn btn-cyan btn-lg px-5 me-2 rounded">
+              Edit
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</section>

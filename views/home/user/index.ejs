@@ -1,0 +1,36 @@
+<% layout("/layouts/boilerplate.ejs") %>
+
+<section
+  class="hero-section vh-100 d-flex align-items-center justify-content-center position-relative text-white text-center"
+  style="
+    background: url('/images/bg.jpg') no-repeat center center;
+    background-size: cover;
+  "
+>
+  <div
+    class="position-absolute top-0 start-0 end-0 bottom-0"
+    style="background-color: rgba(0, 0, 0, 0.45); z-index: 1"
+  ></div>
+  <div
+    class="position-relative"
+    style="z-index: 2; padding-left: 1rem; padding-right: 1rem"
+  >
+    <h1 class="display-4 fw-bold mb-4">
+      Khulna University Career Club<br />
+      Management System
+    </h1>
+    <a
+      href="#job"
+      class="btn btn-cyan btn-lg"
+      style="width: 200px; height: 50px"
+      >Explore</a
+    >
+  </div>
+</section>
+<section id="job"><%- include("../../includes/basicJob.ejs") %></section>
+
+<section><%- include("../../includes/basicEvent.ejs") %></section>
+
+<section><%- include("../../includes/basicCompanies.ejs") %></section>
+
+<section><%- include("../../includes/basicSeminar.ejs") %></section>

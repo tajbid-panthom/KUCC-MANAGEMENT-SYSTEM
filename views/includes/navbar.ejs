@@ -1,0 +1,108 @@
+<!-- Start of Navbar Body Section -->
+
+<nav
+  class="navbar navbar-expand-lg navbar-light bg-light border-bottom sticky-top px-5"
+>
+  <div class="container-fluid">
+    <!-- Logo -->
+    <a class="navbar-brand" href="/">
+      <!-- IMPORTANT: Replace placeholder-logo.png -->
+      <img
+        src="/images/logoMain.jpg"
+        alt="Khulna University Career Club Logo"
+        style="height: 50px; width: 50px"
+      />
+    </a>
+
+    <!-- Toggler/Collapsible Button (for mobile) -->
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar Links (collapsible part) -->
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <!-- Centered Navigation Links -->
+      <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/">Home</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            id="navbarDropdownEvent"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Event
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownEvent">
+            <li>
+              <a class="dropdown-item" href="/currentevents/details"
+                >Current Event</a
+              >
+            </li>
+            <li>
+              <a class="dropdown-item" href="/currentevents">Recent Event</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="/previousevents/details"
+                >Previous Event</a
+              >
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            id="navbarDropdownJob"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Job&Internship
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownJob">
+            <li><a class="dropdown-item" href="/jobs">Jobs Section</a></li>
+            <li><a class="dropdown-item" href="/companies">Companies</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            id="navbarDropdownSeminar"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Seminar
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownSeminar">
+            <li><a class="dropdown-item" href="/mentors">Mentors</a></li>
+            <li><a class="dropdown-item" href="/seminars">Seminars</a></li>
+          </ul>
+        </li>
+      </ul>
+
+      <!-- Right Aligned Buttons -->
+      <div class="d-flex">
+        <!-- Using custom btn-cyan class (Ensure this class is defined in your main CSS) -->
+        <a href="/signup" class="btn btn-cyan me-2">Sign Up</a>
+        <a href="/login" class="btn btn-cyan">Login</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Rest of your EJS page content goes here -->
