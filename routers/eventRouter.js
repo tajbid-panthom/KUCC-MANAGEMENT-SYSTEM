@@ -8,6 +8,7 @@ eventRouter.get("/currentevents", (req, res) => {
 eventRouter.get("/feedback", (req, res) => {
   res.render("home/event/feedback.ejs");
 });
+//route to certificate page
 eventRouter.get("/certificate", (req, res) => {
   res.render("home/event/certificate.ejs");
 });
@@ -23,6 +24,8 @@ eventRouter.get("/currentevents/details", (req, res) => {
 eventRouter.get("/currentevents/details/edit", (req, res) => {
   res.render("home/event/updateEvent.ejs");
 });
+
+//route to previous events page
 eventRouter.get("/previousevents/details", (req, res) => {
   res.render("home/event/previousEventDetails.ejs");
 });

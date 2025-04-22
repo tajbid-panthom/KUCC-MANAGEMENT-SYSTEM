@@ -208,3 +208,8 @@ body{
     position: relative;
     z-index: 1;
   }
+
+  .user-card{
+    width: 100% !important;
+    height: 400px !important;
+  }
