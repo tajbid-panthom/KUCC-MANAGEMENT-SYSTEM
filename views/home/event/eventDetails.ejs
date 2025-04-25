@@ -34,20 +34,17 @@
         style="min-height: 35vh"
       >
         <div class="col-md-7 col-lg-6">
-          <h1 class="display-4 fw-bold mb-3">TEDx Khulna University</h1>
-          <p class="lead mb-0 text-white">
-            Together, we created a platform that inspired ideas, sparked
-            creativity, and celebrated innovation. Here's a glimpse of the
-            unforgettable moments from the event that brought brilliant minds
-            together. Stay tuned for more exciting collaborations and
-            initiatives from KUCC!
-          </p>
+          <h1 class="display-4 fw-bold mb-3"><%=event.title %></h1>
+          <p class="lead mb-0 text-white"><%=event.description %></p>
         </div>
         <div class="col-md-5 col-lg-4 offset-lg-1 mt-4 mt-md-0">
           <div class="card bg-white text-dark rounded-3 shadow-sm border-0">
             <div class="card-body text-center p-4">
               <h5 class="card-title fw-bold mb-3">Date & time</h5>
-              <p class="card-text mb-4">Saturday, March 18 2023, 9.30PM</p>
+              <p class="card-text mb-4">
+                <%=event.event_date.toLocaleDateString() %> ,
+                <%=event.event_time %>
+              </p>
               <a
                 href="/currentevents/registration"
                 class="btn btn-info text-white w-100 py-2 fw-medium"
@@ -70,30 +67,13 @@
       <div class="col-lg-7">
         <div class="mb-4">
           <h4 class="fw-bold mb-3">Description</h4>
-          <p class="text-dark-emphasis small">
-            DesignHub organized a 3D Modeling Workshop using Blender on 16th
-            February at 5 PM. The workshop taught participants the magic of
-            creating stunning 3D models and animations using Blender. It was
-            suitable for both beginners and experienced users. The excitement.
-          </p>
-          <p class="text-dark-emphasis small">
-            DesignHub organized a 3D Modeling Workshop using Blender on 16th
-            February at 5 PM. The workshop taught participants the magic of
-            creating stunning 3D models and animations using Blender. It was
-            suitable for both beginners and experienced users. The event was
-            followed by a blender-render competition, which added to the
-            excitement.
-          </p>
+          <p class="text-dark-emphasis small"><%=event.description %></p>
         </div>
 
         <div class="mb-4">
           <h4 class="fw-bold mb-3">Hours</h4>
           <p class="mb-1">
             <span class="text-dark-emphasis small">Weekdays hour:</span>
-            <span class="fw-medium">7PM - 10PM</span>
-          </p>
-          <p class="mb-0">
-            <span class="text-dark-emphasis small">Sunday hour:</span>
             <span class="fw-medium">7PM - 10PM</span>
           </p>
         </div>
@@ -157,7 +137,7 @@
     <div class="row mt-5 pt-4 border-top border-white border-opacity-25">
       <div class="col-12 text-center">
         <form
-          action="/events/STATIC_PLACEHOLDER_ID?_method=DELETE"
+          action="/events/<%=event.event_id%>?_method=DELETE"
           method="POST"
           style="display: inline-block"
           class="me-3"
@@ -171,7 +151,7 @@
           </button>
         </form>
         <a
-          href="/currentevents/details/edit"
+          href="/currentevents/<%=event.event_id%>/details/edit"
           class="btn btn-info rounded text-white px-5 py-2 fw-medium border border-white"
           style="
             --bs-btn-bg: #00c3ff;

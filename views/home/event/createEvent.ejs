@@ -5,11 +5,13 @@
   style="background: linear-gradient(to bottom, #4ac7de, #6de1f0)"
 >
   <div class="container">
-    <h2 class="text-center text-white fw-bold mb-5 display-5">Create Event</h2>
+    <h2 class="text-center text-white fw-bold mb-5 display-5">
+      Create New Event
+    </h2>
 
     <div class="row justify-content-center">
       <div class="col-md-10 col-lg-8">
-        <form action="/events" method="POST">
+        <form action="/currentevents" method="POST">
           <div class="mb-3">
             <label for="eventTitleInput" class="form-label text-white fw-medium"
               >Event Title</label
@@ -18,8 +20,8 @@
               type="text"
               class="form-control form-control-lg rounded"
               id="eventTitleInput"
-              name="eventTitle"
-              placeholder="Enter your mail"
+              name="title"
+              placeholder="Enter your Title"
               required
             />
           </div>
@@ -32,69 +34,36 @@
               type="text"
               class="form-control form-control-lg rounded"
               id="eventVenueInput"
-              name="eventVenue"
-              placeholder="Enter your mail"
+              name="venue"
+              placeholder="Enter your Venue"
               required
             />
           </div>
 
           <div class="row mb-3">
             <div class="col-md-6 mb-3 mb-md-0">
-              <label
-                for="startTimeInput"
-                class="form-label text-white fw-medium"
-                >Start time</label
+              <label for="timeInput" class="form-label text-white fw-medium"
+                >Enter Time</label
               >
               <input
                 type="time"
                 class="form-control form-control-lg rounded"
-                id="startTimeInput"
-                name="startTime"
-                placeholder="Enter your mail"
+                id="timeInput"
+                name="event_time"
+                placeholder="Enter your time"
                 required
               />
             </div>
-            <div class="col-md-6">
-              <label for="endTimeInput" class="form-label text-white fw-medium"
-                >End time</label
-              >
-              <input
-                type="time"
-                class="form-control form-control-lg rounded"
-                id="endTimeInput"
-                name="endTime"
-                placeholder="Enter your mail"
-                required
-              />
-            </div>
-          </div>
-
-          <div class="row mb-3">
             <div class="col-md-6 mb-3 mb-md-0">
-              <label
-                for="startDateInput"
-                class="form-label text-white fw-medium"
-                >Start date</label
+              <label for="dateInput" class="form-label text-white fw-medium"
+                >Enter date</label
               >
               <input
                 type="date"
                 class="form-control form-control-lg rounded"
-                id="startDateInput"
-                name="startDate"
-                placeholder="Enter your mail"
-                required
-              />
-            </div>
-            <div class="col-md-6">
-              <label for="endDateInput" class="form-label text-white fw-medium"
-                >End date</label
-              >
-              <input
-                type="date"
-                class="form-control form-control-lg rounded"
-                id="endDateInput"
-                name="endDate"
-                placeholder="Enter your mail"
+                id="dateInput"
+                name="event_date"
+                placeholder="Enter your Date"
                 required
               />
             </div>
@@ -106,15 +75,15 @@
               class="form-label text-white fw-medium"
               >Event Description</label
             >
-            <input
+            <textarea
               type="text"
               class="form-control form-control-lg rounded"
               id="eventDescriptionInput"
-              name="eventDescription"
-              rows="5"
+              name="description"
+              rows="3"
               placeholder="Type here..."
               required
-            />
+            ></textarea>
           </div>
 
           <div class="d-grid">

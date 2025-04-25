@@ -37,17 +37,8 @@
 
       <div class="row align-items-center flex-grow-1">
         <div class="col-md-7 col-lg-6">
-          <h1 class="display-4 fw-bold mb-2">Dream world wide</h1>
-          <h1 class="display-4 fw-bold mb-3">in jakatra</h1>
-          <h4 class="mb-3 fw-normal">IIIT Sonepat</h4>
-          <p class="lead fs-6 mb-3">
-            DesignHub organized a 3D Modeling Workshop using Blender on 16th
-            February at 5 PM. The workshop taught participants the magic of
-            creating stunning 3D models and animations using Blender. It was
-            suitable for both beginners and experienced users. The event was
-            followed by a blender-render competition, which added to the
-            excitement.
-          </p>
+          <h1 class="display-4 fw-bold mb-2"><%=event.title %></h1>
+          <p class="lead fs-6 mb-3"><%=event.description %></p>
           <a
             href="#eventLocationMap"
             class="btn btn-link text-white text-decoration-none ps-0"
@@ -64,7 +55,10 @@
           >
             <div class="card-body text-center p-4">
               <h5 class="card-title fw-bold mb-3">Date & time</h5>
-              <p class="card-text mb-0">Saturday, March 18 2023, 9.30PM</p>
+              <p class="card-text mb-0">
+                <%=event.event_date.toLocaleDateString(); %> <%=
+                event.event_time %>
+              </p>
             </div>
           </div>
         </div>
@@ -77,20 +71,7 @@
       <div class="col-lg-7">
         <div class="mb-4">
           <h4 class="fw-bold mb-3">Description</h4>
-          <p class="text-white-50 small">
-            DesignHub organized a 3D Modeling Workshop using Blender on 16th
-            February at 5 PM. The workshop taught participants the magic of
-            creating stunning 3D models and animations using Blender. It was
-            suitable for both beginners and experienced users. The excitement.
-          </p>
-          <p class="text-white-50 small">
-            DesignHub organized a 3D Modeling Workshop using Blender on 16th
-            February at 5 PM. The workshop taught participants the magic of
-            creating stunning 3D models and animations using Blender. It was
-            suitable for both beginners and experienced users. The event was
-            followed by a blender-render competition, which added to the
-            excitement.
-          </p>
+          <p class="text-white-50 small"><%=event.description %></p>
         </div>
 
         <div class="mb-4">
@@ -130,17 +111,12 @@
             >
             </iframe>
           </div>
-          <h6 class="fw-medium">Dream world wide in jakatra</h6>
-          <p class="text-white-50 small">
-            Dummy location generation model by RSU ... Our approach generates
-            more realistic dummy locations
-          </p>
         </div>
       </div>
     </div>
     <div class="container text-center mb-5">
       <a
-        href="/certificate"
+        href="/certificate/<%=event.event_id %>"
         class="btn btn-info btn-lg text-white rounded shadow-sm px-5 py-2 fw-medium border border-white"
         role="button"
         style="
@@ -186,66 +162,13 @@
             class="rounded-circle me-3"
           />
           <div class="flex-grow-1">
-            <h6 class="fw-bold mb-1">John Doe</h6>
-            <p class="text-muted mb-2 small">
-              I just tried this recipe and it was amazing! The instructions were
-              clear and easy to follow, and the end result was delicious. I will
-              definitely be making this again. Thanks for sharing!
-            </p>
+            <h6 class="fw-bold mb-1"><%=event.name %></h6>
+            <p class="text-muted mb-2 small"><%=event.comment %></p>
             <div
               class="comment-actions d-flex align-items-center gap-2 text-muted small"
             >
-              <button
-                type="button"
-                class="btn btn-link btn-sm text-muted text-decoration-none p-0"
-              >
-                <i class="bi bi-arrow-up-short"></i>
-              </button>
-              <button
-                type="button"
-                class="btn btn-link btn-sm text-muted text-decoration-none p-0"
-              >
-                <i class="bi bi-arrow-down-short"></i>
-              </button>
               <span>•</span>
               <span>Just now</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="comment-item d-flex align-items-start mb-4">
-          <img
-            src="https://github.com/shadcn.png"
-            alt="Jane Doe Avatar"
-            width="40"
-            height="40"
-            class="rounded-circle me-3"
-          />
-          <div class="flex-grow-1">
-            <h6 class="fw-bold mb-1">Jane Doe</h6>
-            <p class="text-muted mb-2 small">
-              I really appreciate the insights and perspective shared in this
-              article. It's definitely given me something to think about and has
-              helped me see things from a different angle. Thank you for writing
-              and sharing!
-            </p>
-            <div
-              class="comment-actions d-flex align-items-center gap-2 text-muted small"
-            >
-              <button
-                type="button"
-                class="btn btn-link btn-sm text-muted text-decoration-none p-0"
-              >
-                <i class="bi bi-arrow-up-short"></i>
-              </button>
-              <button
-                type="button"
-                class="btn btn-link btn-sm text-muted text-decoration-none p-0"
-              >
-                <i class="bi bi-arrow-down-short"></i>
-              </button>
-              <span>•</span>
-              <span>5 min ago</span>
             </div>
           </div>
         </div>

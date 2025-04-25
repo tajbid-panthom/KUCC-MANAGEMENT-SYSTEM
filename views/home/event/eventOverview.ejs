@@ -15,7 +15,7 @@
     <h3 class="display-5 fw-bold mb-4">EXPLORE THE CURRENT<br />EVENT</h3>
 
     <a
-      href="/currentevents/details"
+      href="/currentevents/<%=event.event_id%>/details"
       class="btn btn-lg px-5 shadow-sm"
       style="background-color: #28c3f5; color: white; border-color: #28c3f5"
       >Explore</a
@@ -29,7 +29,7 @@
 >
   <div class="container text-center mb-5">
     <a
-      href="/currentevents/new"
+      href="/events/new"
       class="btn btn-info btn-lg text-white rounded shadow-sm px-5 py-2 fw-medium border border-white"
       role="button"
       style="
@@ -96,7 +96,7 @@
           <img src="/images/sala.jpg" class="card-img-top" alt="Event Image" />
           <div class="card-body">
             <a
-              href="/previousevents/details"
+              href="/previousevents/<%=event.event_id%>/details"
               class="text-decoration-none text-dark shadow-sm px-5 py-2 fw-medium"
             >
               <h5 class="card-title fw-bold mb-2">

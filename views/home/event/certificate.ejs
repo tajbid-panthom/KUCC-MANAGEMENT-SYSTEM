@@ -55,24 +55,28 @@
         </p>
         <h2 class="certificate-name display-4 fw-bold mb-4">NAME SURNAME</h2>
         <p class="text-muted small px-md-5">
-          lorem ipsum dolor sit amet consectur adpricing ett, vestbakum in
-          sagetic erat. nam sampar risus vitae viverra portanam semper, risus
-          vitae vivova porta consectur adpiscing elt. vestbakum in sagetic erat
-          lorem ipsum dolor sit amet consectur adpricing ett, vestbakum in
-          sagetic erat. nam sampar risus vitae viverra portanam semper, risus
-          vitae vivova porta consectur adpiscing elt. vestbakum in sagetic erat
-          lorem ipsum color sit amet.
+          This is to certify that <span class="fw-bold">NAME SURNAME</span> has
+          successfully completed the
+          <span class="fw-bold text-primary"><%=event.title %></span> event
+          organized by <span class="fw-bold">Tajbid</span>
+          on <%=event.issue_date.toLocaleDateString() %>. This certificate is
+          awarded in recognition of their dedication and commitment to
+          excellence.
         </p>
       </div>
 
       <div class="row mt-5 pt-4 text-center">
         <div class="col-6">
+          <p class="text-muted small text-uppercase fw-bold">
+            <%=event.issue_date.toLocaleDateString() %>
+          </p>
           <hr class="certificate-hr mb-1" />
-          <p class="text-muted small text-uppercase fw-bold">Date</p>
+          <p class="text-dark small text-uppercase fw-bold">Date</p>
         </div>
         <div class="col-6">
+          <p class="text-muted small text-uppercase fw-bold">Tajbid</p>
           <hr class="certificate-hr mb-1" />
-          <p class="text-muted small text-uppercase fw-bold">Signature</p>
+          <p class="text-dark small text-uppercase fw-bold">Signature</p>
         </div>
       </div>
     </div>
