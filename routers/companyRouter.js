@@ -9,13 +9,23 @@ const connection = mysql.createConnection({
   password: "Tajbid01",
   database: "KUCC",
 });
-
 companyRouter.get("/companies", (req, res) => {
-  let q = "SELECT * FROM Company ORDER BY company_id DESC;";
+  const limit = parseInt(req.query.limit) || 6; // Default limit is 6
+  const offset = parseInt(req.query.offset) || 0; // Offset starts from 0
+
+  const query = `SELECT * FROM Company ORDER BY company_id DESC LIMIT ? OFFSET ?;`;
+
   try {
-    connection.query(q, (err, companies) => {
+    connection.query(query, [limit, offset], (err, companies) => {
       if (err) throw err;
-      res.render("home/company/companiesOverview.ejs", { companies });
+
+      if (req.xhr) {
+        // For AJAX requests (i.e., when clicking the "Load More" button)
+        res.json(companies);
+      } else {
+        // Render the page initially
+        res.render("home/company/companiesOverview.ejs", { companies });
+      }
     });
   } catch (error) {
     console.log(error);

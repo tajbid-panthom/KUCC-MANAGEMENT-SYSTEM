@@ -13,13 +13,24 @@ const connection = mysql.createConnection({
 
 //all data reading route
 mentorRouter.get("/mentors", (req, res) => {
-  let q = `select * from Mentor order by mentor_id desc;`;
+  const limit = parseInt(req.query.limit) || 6; // Default limit is 6
+  const offset = parseInt(req.query.offset) || 0; // Offset starts from 0
+
+  const q = `SELECT * FROM Mentor ORDER BY mentor_id DESC LIMIT ? OFFSET ?;`;
+
   try {
-    connection.query(q, (err, mentors) => {
+    connection.query(q, [limit, offset], (err, mentors) => {
       if (err) {
         throw err;
       }
-      res.render("home/mentor/mentorOverview.ejs", { mentors });
+
+      if (req.xhr) {
+        // Return JSON for AJAX requests (i.e., "Load More")
+        res.json(mentors);
+      } else {
+        // Render the mentors overview initially
+        res.render("home/mentor/mentorOverview.ejs", { mentors });
+      }
     });
   } catch (error) {
     console.log(error);

@@ -4,8 +4,8 @@
   <div class="container">
     <h3 class="mb-4 fw-semibold text-dark">Top companies</h3>
 
-    <div class="row g-4">
-      <% for(let company of companies) { %>
+    <div class="row g-4" id="company-list">
+      <% for (let company of companies) { %>
       <div class="col-lg-4 col-md-6">
         <div class="card h-100 border-0 shadow-sm rounded-3 overflow-hidden">
           <div class="card-body pb-0">
@@ -15,7 +15,6 @@
                 style="width: 50px; height: 50px; background-color: #ec407a"
               >
                 <i class="fas fa-basketball-ball text-white fs-4"></i>
-
                 <img
                   src="https://github.com/shadcn.png"
                   alt="Logo"
@@ -55,5 +54,65 @@
       </div>
       <% } %>
     </div>
+
+    <% if (companies.length >= 6) { %>
+    <div class="text-center mt-4">
+      <button id="loadMoreBtn" class="btn btn-primary px-4 py-2">
+        Load More
+      </button>
+    </div>
+    <% } %>
   </div>
 </div>
+
+<script>
+  let offset = <%= companies.length %>;
+  const limit = 6;
+
+  document.getElementById("loadMoreBtn")?.addEventListener("click", function () {
+    fetch(`/companies?limit=${limit}&offset=${offset}`, {
+      headers: { 'X-Requested-With': 'XMLHttpRequest' }
+    })
+    .then(res => res.json())
+    .then(newCompanies => {
+      const container = document.getElementById("company-list");
+
+      newCompanies.forEach(company => {
+        const col = document.createElement("div");
+        col.className = "col-lg-4 col-md-6";
+
+        col.innerHTML = `
+          <div class="card h-100 border-0 shadow-sm rounded-3 overflow-hidden">
+            <div class="card-body pb-0">
+              <div class="d-flex align-items-start mb-3">
+                <div class="flex-shrink-0 me-3 rounded d-flex align-items-center justify-content-center" style="width: 50px; height: 50px; background-color: #ec407a">
+                  <img src="https://github.com/shadcn.png" alt="Logo" width="50" height="50" class="rounded" />
+                </div>
+                <div class="flex-grow-1">
+                  <h6 class="mb-1 fw-bold d-inline-block me-2">
+                    ${company.company_name} Corporation
+                  </h6>
+                  <span class="badge rounded-pill fw-normal me-1" style="background-color: #fce4ec; color: #ad1457">Featured</span>
+                  <p class="card-text small text-muted mb-0">
+                    <i class="fas fa-map-marker-alt fa-fw me-1"></i>${company.address}
+                  </p>
+                </div>
+              </div>
+            </div>
+            <a href="/companies/${company.company_id}/details" class="d-block p-3 text-center text-decoration-none fw-semibold" style="background-color: #e3f2fd; color: #0d6efd">
+              Company Details
+            </a>
+          </div>
+        `;
+        container.appendChild(col);
+      });
+
+      offset += newCompanies.length;
+
+      // Hide the "Load More" button if no more companies to load
+      if (newCompanies.length < limit) {
+        document.getElementById("loadMoreBtn").style.display = "none";
+      }
+    });
+  });
+</script>

@@ -23,39 +23,78 @@
 
     <div class="row justify-content-center">
       <div class="col-md-8 col-lg-6">
-        <div class="mb-3 bg-white p-3 rounded shadow-sm text-center">
-          MD TAJBID HOSSAIN BAPPI
-        </div>
+        <form action="/profile/<%=member.member_id%>?_method=PUT" method="POST">
+          <div class="mb-3">
+            <input
+              type="text"
+              class="form-control form-control-lg rounded text-center"
+              id="memberNameInput"
+              name="name"
+              required
+              value="<%=member.name %>"
+            />
+          </div>
+          <div class="mb-3">
+            <input
+              type="text"
+              class="form-control form-control-lg rounded text-center"
+              id="memberIdInput"
+              name="student_id"
+              required
+              value="<%=member.student_id %>"
+            />
+          </div>
+          <div class="mb-3">
+            <input
+              type="text"
+              class="form-control form-control-lg rounded text-center"
+              id="memberDeptInput"
+              name="dept_name"
+              required
+              value="<%=member.dept_name %>"
+            />
+          </div>
+          <div class="mb-3">
+            <input
+              type="text"
+              class="form-control form-control-lg rounded text-center"
+              id="memberPhnInput"
+              name="phone_number"
+              required
+              value="<%=member.phone_number %>"
+            />
+          </div>
+          <div class="mb-3">
+            <input
+              type="text"
+              class="form-control form-control-lg rounded text-center"
+              id="memberEmailInput"
+              name="email"
+              required
+              value="<%=member.email %>"
+            />
+          </div>
+          <div class="mb-3">
+            <input
+              type="text"
+              class="form-control form-control-lg rounded text-center"
+              id="memberHomeInput"
+              name="hometown"
+              required
+              value="<%=member.hometown %>"
+            />
+          </div>
 
-        <div class="mb-3 bg-white p-3 rounded shadow-sm text-center">
-          230235
-        </div>
-
-        <div class="mb-3 bg-white p-3 rounded shadow-sm text-center">
-          Computer Science & Engineering Discipline
-        </div>
-
-        <div class="mb-3 bg-white p-3 rounded shadow-sm text-center">
-          01738166031
-        </div>
-
-        <div class="mb-3 bg-white p-3 rounded shadow-sm text-center">
-          230235@ku.ac.bd
-        </div>
-
-        <div class="mb-4 bg-white p-3 rounded shadow-sm text-center">
-          Jashore,Khulna
-        </div>
-
-        <div class="d-grid gap-2 col-6 mx-auto">
-          <button
-            type="submit"
-            class="btn btn-info btn-lg shadow-sm text-white fw-medium border-0"
-            style="background-color: #00c3ff; padding: 0.75rem 1rem"
-          >
-            Update
-          </button>
-        </div>
+          <div class="d-grid gap-2 col-6 mx-auto">
+            <button
+              type="submit"
+              class="btn btn-info btn-lg shadow-sm text-white fw-medium border-0"
+              style="background-color: #00c3ff; padding: 0.75rem 1rem"
+            >
+              Update
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
