@@ -1,5 +1,6 @@
 const express = require("express");
 const mysql = require("mysql2");
+const shared = require("./sharedState");
 
 const connection = mysql.createConnection({
   host: "localhost",
@@ -15,7 +16,10 @@ eventRouter.get("/currentevents", (req, res) => {
   try {
     connection.query(q, (err, events) => {
       if (err) throw err;
-      res.render("home/event/eventOverview.ejs", { event: events[1] });
+      res.render("home/event/eventOverview.ejs", {
+        event: events[1],
+        admin: shared.admin,
+      });
     });
   } catch (error) {
     console.log(error);
@@ -64,7 +68,11 @@ eventRouter.get("/currentevents/:id/details", (req, res) => {
   try {
     connection.query(q, (err, events) => {
       if (err) throw err;
-      res.render("home/event/eventDetails.ejs", { event: events[0] });
+      res.render("home/event/eventDetails.ejs", {
+        event: events[0],
+        admin: shared.admin,
+        member_status: shared.member_status,
+      });
     });
   } catch (error) {
     console.log(error);
@@ -104,8 +112,11 @@ eventRouter.get("/previousevents/:id/details", (req, res) => {
   try {
     connection.query(q, (err, events) => {
       if (err) throw err;
-      console.log(events);
-      res.render("home/event/previousEventDetails.ejs", { event: events[0] });
+      res.render("home/event/previousEventDetails.ejs", {
+        event: events[0],
+        admin: shared.admin,
+        member_status: shared.member_status,
+      });
     });
   } catch (error) {
     console.log(error);

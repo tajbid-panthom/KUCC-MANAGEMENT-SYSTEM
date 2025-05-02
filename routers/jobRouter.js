@@ -1,5 +1,6 @@
 const express = require("express");
 const jobRouter = express.Router();
+const shared = require("./sharedState");
 const mysql = require("mysql2");
 
 const connection = mysql.createConnection({
@@ -32,7 +33,11 @@ jobRouter.get("/jobs", (req, res) => {
       connection.query(q2, (err2, countResult) => {
         if (err2) throw err2;
         let totalJobs = countResult[0].totalJobs;
-        res.render("home/job/jobOverview.ejs", { jobs, totalJobs });
+        res.render("home/job/jobOverview.ejs", {
+          jobs,
+          totalJobs,
+          admin: shared.admin,
+        });
       });
     });
   } catch (error) {
@@ -62,7 +67,11 @@ jobRouter.get("/jobs/:id/details", (req, res) => {
     connection.query(q, (err, jobs) => {
       if (err) throw err;
 
-      res.render("home/job/jobDetails.ejs", { job: jobs[0] });
+      res.render("home/job/jobDetails.ejs", {
+        job: jobs[0],
+        admin: shared.admin,
+        member_status: shared.member_status,
+      });
     });
   } catch (error) {
     console.log(error);

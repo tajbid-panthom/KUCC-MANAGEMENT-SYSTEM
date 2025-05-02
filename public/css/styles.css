@@ -213,3 +213,7 @@ body{
     width: 100% !important;
     height: 400px !important;
   }
+
+.cursor-pointer{
+    cursor:pointer !important;
+}

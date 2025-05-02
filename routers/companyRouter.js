@@ -1,5 +1,5 @@
 const express = require("express");
-
+const shared = require("./sharedState");
 const companyRouter = express.Router();
 const mysql = require("mysql2");
 
@@ -24,7 +24,10 @@ companyRouter.get("/companies", (req, res) => {
         res.json(companies);
       } else {
         // Render the page initially
-        res.render("home/company/companiesOverview.ejs", { companies });
+        res.render("home/company/companiesOverview.ejs", {
+          companies,
+          admin: shared.admin,
+        });
       }
     });
   } catch (error) {
@@ -50,7 +53,10 @@ companyRouter.get("/companies/:id/details", (req, res) => {
   try {
     connection.query(q, (err, company) => {
       if (err) throw err;
-      res.render("home/company/companyDetails.ejs", { company: company[0] });
+      res.render("home/company/companyDetails.ejs", {
+        company: company[0],
+        admin: shared.admin,
+      });
     });
   } catch (error) {
     console.log(error);

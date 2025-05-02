@@ -45,6 +45,7 @@
                 <%=event.event_date.toLocaleDateString() %> ,
                 <%=event.event_time %>
               </p>
+              <% if(member_status==="active"){ %>
               <a
                 href="/currentevents/registration"
                 class="btn btn-info text-white w-100 py-2 fw-medium"
@@ -55,6 +56,7 @@
                 "
                 >Book now</a
               >
+              <% } %>
             </div>
           </div>
         </div>
@@ -107,11 +109,6 @@
             >
             </iframe>
           </div>
-          <h6 class="fw-medium">Dream world wide in jakatra</h6>
-          <p class="text-white-50 small">
-            Dummy location generation model by RSU ... Our approach generates
-            more realistic dummy locations
-          </p>
         </div>
 
         <div>
@@ -133,7 +130,7 @@
         </div>
       </div>
     </div>
-
+    <% if(admin){ %>
     <div class="row mt-5 pt-4 border-top border-white border-opacity-25">
       <div class="col-12 text-center">
         <form
@@ -163,5 +160,6 @@
         </a>
       </div>
     </div>
+    <% } %>
   </div>
 </section>

@@ -14,13 +14,13 @@
       />
     </div>
 
-    <form action="/register" method="POST">
+    <form action="/signup" method="POST">
       <div class="row g-4">
         <div class="col-lg-4">
           <div class="mb-3">
             <label for="regName" class="form-label small fw-medium"
-              >Name:</label
-            >
+              >Name:
+            </label>
             <input
               type="text"
               class="form-control bg-light border-0"
@@ -38,7 +38,7 @@
               type="text"
               class="form-control bg-light border-0"
               id="regStudentId"
-              name="studentId"
+              name="student_id"
               placeholder="Enter your student id"
               required
             />
@@ -59,6 +59,12 @@
                 Electronics & Communication Engineering
               </option>
               <option value="ARCHI">Architecture</option>
+              <option value="URP">Urban & Regional Planning</option>
+              <option value="MATH">Mathematics</option>
+              <option value="PHY">Physics</option>
+              <option value="CHE">Chemistry</option>
+              <option value="PHARMACHY">Pharmachy</option>
+              <option value="BGE">Bioteachnology & Genetics Engineering</option>
             </select>
           </div>
           <div class="mb-3">
@@ -95,16 +101,17 @@
             >
             <input
               type="password"
-              class="form-control bg-light border-0 pe-5"
+              class="form-control bg-light border-0 pe-5 password-input"
               id="regPassword"
               name="password"
               placeholder="********"
               required
             />
             <span
-              class="position-absolute end-0 top-50 translate-middle-y me-3 mt-3"
-              ><i class="bi bi-eye-fill text-secondary"></i
-            ></span>
+              class="position-absolute end-0 top-50 translate-middle-y me-3 mt-3 toggle-password cursor-pointer"
+            >
+              <i class="bi bi-eye-fill text-secondary"></i>
+            </span>
           </div>
           <div class="mb-3 position-relative">
             <label for="regConfirmPassword" class="form-label small fw-medium"
@@ -112,16 +119,17 @@
             >
             <input
               type="password"
-              class="form-control bg-light border-0 pe-5"
+              class="form-control bg-light border-0 pe-5 password-input"
               id="regConfirmPassword"
               name="confirm_password"
               placeholder="********"
               required
             />
             <span
-              class="position-absolute end-0 top-50 translate-middle-y me-3 mt-3"
-              ><i class="bi bi-eye-fill text-secondary"></i
-            ></span>
+              class="position-absolute end-0 top-50 translate-middle-y me-3 mt-3 toggle-password cursor-pointer"
+            >
+              <i class="bi bi-eye-fill text-secondary"></i>
+            </span>
           </div>
           <div class="mb-3">
             <label for="regPaymentMethod" class="form-label small fw-medium"
@@ -130,7 +138,7 @@
             <select
               class="form-select bg-light border-0"
               id="regPaymentMethod"
-              name="paymentMethod"
+              name="payment_method"
               required
             >
               <option selected disabled value="">
@@ -148,7 +156,7 @@
             <textarea
               class="form-control bg-light border-0"
               id="regExpectationClub"
-              name="expectationClub"
+              name="expectation"
               rows="2"
               placeholder="Write your expectation"
             ></textarea>
@@ -164,7 +172,7 @@
               type="text"
               class="form-control bg-light border-0"
               id="regHomeTown"
-              name="homeTown"
+              name="hometown"
               placeholder="Enter your home town"
               required
             />
@@ -177,7 +185,7 @@
               type="tel"
               class="form-control bg-light border-0"
               id="regMobileNo"
-              name="mobileNo"
+              name="phone_number"
               placeholder="Enter your mobile no"
               required
             />
@@ -190,7 +198,7 @@
               type="text"
               class="form-control bg-light border-0"
               id="regTransactionId"
-              name="transactionId"
+              name="transaction_id"
               placeholder="Enter your transaction id"
               required
             />
@@ -202,7 +210,7 @@
             <textarea
               class="form-control bg-light border-0"
               id="regWhyHire"
-              name="whyHire"
+              name="why_hire"
               rows="3"
               placeholder="Write your expectation"
             ></textarea>
@@ -227,3 +235,36 @@
     </form>
   </div>
 </section>
+<script>
+  document.querySelectorAll(".toggle-password").forEach(function (icon) {
+    icon.addEventListener("click", function () {
+      // Find the associated password input
+      const input = this.parentElement.querySelector(".password-input");
+
+      // Toggle between 'password' and 'text' type
+      const type =
+        input.getAttribute("type") === "password" ? "text" : "password";
+      input.setAttribute("type", type);
+
+      // Toggle eye icon (Bootstrap Icons)
+      const eyeIcon = this.querySelector("i");
+      if (type === "password") {
+        eyeIcon.classList.remove("bi-eye-slash-fill");
+        eyeIcon.classList.add("bi-eye-fill");
+      } else {
+        eyeIcon.classList.remove("bi-eye-fill");
+        eyeIcon.classList.add("bi-eye-slash-fill");
+      }
+    });
+  });
+
+  document.querySelector("form").addEventListener("submit", function (e) {
+    const password = document.getElementById("regPassword").value;
+    const confirmPassword = document.getElementById("regConfirmPassword").value;
+
+    if (password !== confirmPassword) {
+      e.preventDefault(); // Stop form submission
+      alert("Passwords do not match!");
+    }
+  });
+</script>

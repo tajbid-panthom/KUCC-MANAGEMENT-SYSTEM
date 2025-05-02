@@ -1,5 +1,6 @@
 const express = require("express");
 const mysql = require("mysql2");
+const shared = require("./sharedState");
 
 const seminarRouter = express.Router();
 
@@ -16,7 +17,11 @@ seminarRouter.get("/seminars", (req, res) => {
     connection.query(q, (err, result) => {
       if (err) throw err;
       let seminar = result[0];
-      res.render("home/seminar/seminarOverview.ejs", { seminar });
+      res.render("home/seminar/seminarOverview.ejs", {
+        seminar,
+        admin: shared.admin,
+        member_status: shared.member_status,
+      });
     });
   } catch (error) {}
 });

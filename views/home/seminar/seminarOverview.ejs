@@ -24,12 +24,14 @@
         <span style="color: #28c3f5">Assistant Professor Mr. X</span>
       </p>
 
+      <% if(admin){ %>
       <a
         href="/seminars/new"
         class="btn btn-cyan btn-lg px-5 shadow-sm"
         style="background-color: #28c3f5; color: white; border: none"
         >Add New</a
       >
+      <% } %>
     </div>
   </section>
   <section class="seminar-section py-5 min-vh-100 bg-info bg-gradient">
@@ -73,11 +75,13 @@
             <div class="card-body text-center">
               <h5 class="card-title fw-bold mb-3">Date & time</h5>
               <p class="card-text mb-4">
-                <%=seminar.date %>, <%=seminar.time %>,
+                <%=seminar.date.toLocaleDateString() %>, <%=seminar.time %>
               </p>
+              <% if(member_status==="active"){ %>
               <a href="#" class="btn btn-info text-white w-100 py-2 fw-medium"
                 >Book now</a
               >
+              <% } %>
             </div>
           </div>
 
@@ -102,6 +106,7 @@
           </div>
         </div>
       </div>
+      <% if(admin){ %>
       <div class="row mt-5">
         <div class="col-12 text-center">
           <div class="d-inline-block">
@@ -172,5 +177,6 @@
         </div>
       </div>
     </div>
+    <% } %>
   </section>
 </section>

@@ -84,67 +84,6 @@
             </li>
           </ul>
         </div>
-
-        <div class="mb-4">
-          <h5 class="fw-bold mb-3 text-white">Desirable:</h5>
-          <ul class="list-unstyled text-white-50">
-            <li class="mb-2">
-              <i class="bi bi-dot"></i> Working knowledge of eCommerce
-              platforms, ideally Shopify but also others e.g. Magento,
-              WooCommerce, Visualsoft to enable seamless migrations.
-            </li>
-            <li class="mb-2">
-              <i class="bi bi-dot"></i> Working knowledge of payment gateways
-            </li>
-            <li class="mb-2">
-              <i class="bi bi-dot"></i> API platform experience / Building
-              restful APIs
-            </li>
-          </ul>
-        </div>
-
-        <div class="mb-5">
-          <h5 class="fw-bold mb-3 text-white">Benefits</h5>
-          <ul class="list-unstyled text-white-50">
-            <li class="mb-2">
-              <i class="bi bi-dot"></i> Early finish on Fridays for our end of
-              week catch up (4:30 finish, and drink of your choice from the bar)
-            </li>
-            <li class="mb-2">
-              <i class="bi bi-dot"></i> 28 days holiday (including bank
-              holidays) rising by 1 day per year PLUS an additional day off on
-              your birthday
-            </li>
-            <li class="mb-2">
-              <i class="bi bi-dot"></i> Generous annual bonus.
-            </li>
-            <li class="mb-2"><i class="bi bi-dot"></i> Healthcare package</li>
-            <li class="mb-2">
-              <i class="bi bi-dot"></i> Paid community days to volunteer for a
-              charity of your choice
-            </li>
-            <li class="mb-2">
-              <i class="bi bi-dot"></i> £100 contribution for your own personal
-              learning and development
-            </li>
-            <li class="mb-2">
-              <i class="bi bi-dot"></i> Free Breakfast on Mondays and free
-              snacks in the office
-            </li>
-            <li class="mb-2">
-              <i class="bi bi-dot"></i> Access to Perkbox with numerous
-              discounts plus free points from the company to spend as you wish.
-            </li>
-            <li class="mb-2"><i class="bi bi-dot"></i> Cycle 2 Work Scheme</li>
-            <li class="mb-2">
-              <i class="bi bi-dot"></i> Brand new MacBook Pro
-            </li>
-            <li class="mb-2">
-              <i class="bi bi-dot"></i> Joining an agency on the cusp of
-              exponential growth and being part of this exciting story.
-            </li>
-          </ul>
-        </div>
       </div>
 
       <div class="col-lg-4">
@@ -152,12 +91,14 @@
           <button type="button" class="btn btn-outline-light flex-shrink-0">
             <i class="bi bi-bookmark"></i>
           </button>
+          <% if(member_status==="active"){ %>
           <a
             href="#"
             class="btn btn-primary w-100 fw-medium d-flex align-items-center justify-content-center"
           >
             Apply Now <i class="bi bi-arrow-right ms-2"></i>
           </a>
+          <% } %>
         </div>
 
         <div class="card bg-white text-dark rounded-3 shadow-sm border-0">
@@ -182,7 +123,7 @@
         </div>
       </div>
     </div>
-
+    <% if(admin){ %>
     <div class="row mt-5 pt-4 border-top border-white border-opacity-25">
       <div class="col-12 text-center">
         <a
@@ -213,5 +154,6 @@
         </form>
       </div>
     </div>
+    <% } %>
   </div>
 </section>

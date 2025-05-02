@@ -114,6 +114,7 @@
         </div>
       </div>
     </div>
+    <% if(member_status==="active") {%>
     <div class="container text-center mb-5">
       <a
         href="/certificate/<%=event.event_id %>"
@@ -129,11 +130,13 @@
         Download Certificate
       </a>
     </div>
+    <% } %>
   </div>
 </section>
 
 <section class="comments-section py-5" style="background-color: #d4f5fc">
   <div class="container">
+    <% if(member_status==="active") {%>
     <div class="container text-center mb-5">
       <a
         href="/feedback"
@@ -149,6 +152,7 @@
         Create New Feedback
       </a>
     </div>
+    <% } %>
     <div class="bg-white p-4 p-md-5 rounded-3 shadow-sm">
       <h3 class="fw-bold mb-4">Feedback</h3>
 

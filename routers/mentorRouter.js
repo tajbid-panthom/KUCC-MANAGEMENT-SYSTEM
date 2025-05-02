@@ -1,4 +1,5 @@
 const express = require("express");
+const shared = require("./sharedState");
 
 const mysql = require("mysql2");
 
@@ -29,7 +30,10 @@ mentorRouter.get("/mentors", (req, res) => {
         res.json(mentors);
       } else {
         // Render the mentors overview initially
-        res.render("home/mentor/mentorOverview.ejs", { mentors });
+        res.render("home/mentor/mentorOverview.ejs", {
+          mentors,
+          admin: shared.admin,
+        });
       }
     });
   } catch (error) {
@@ -45,7 +49,10 @@ mentorRouter.get("/mentors/:id/view", (req, res) => {
     connection.query(q, (err, mentors) => {
       if (err) throw err;
       let mentor = mentors[0];
-      res.render("home/mentor/mentorDetails.ejs", { mentor });
+      res.render("home/mentor/mentorDetails.ejs", {
+        mentor,
+        admin: shared.admin,
+      });
     });
   } catch (error) {
     console.log(error);

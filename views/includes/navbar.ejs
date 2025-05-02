@@ -98,9 +98,13 @@
       <!-- Right Aligned Buttons -->
       <div class="d-flex">
         <!-- Using custom btn-cyan class (Ensure this class is defined in your main CSS) -->
+         <%if(abs_member===null){ %>
         <a href="/signup" class="btn btn-cyan me-2">Sign Up</a>
         <a href="/login" class="btn btn-cyan">Login</a>
-        
+        <% } else { %>
+        <a href="/profile" class="btn btn-cyan me-2">Profile</a>
+        <a href="/logout" class="btn btn-cyan">Logout</a>
+        <% } %>
     </div>
   </div>
 </nav>
