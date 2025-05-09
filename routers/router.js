@@ -18,6 +18,9 @@ router.use((_, res, next) => {
 });
 router.use((_, res, next) => {
   res.locals.admin = admin;
+  res.locals.upevent_id = shared.upevent_id;
+  res.locals.event_id = shared.event_id;
+  res.locals.preEvent_id = shared.preEvent_id;
   next();
 });
 //route to login page
@@ -38,7 +41,7 @@ router.post("/login", (req, res) => {
 
     if (adminResults.length > 0) {
       shared.admin = true;
-      return res.redirect("/admin");
+      return res.redirect("/");
     }
 
     const memberQuery = `SELECT * FROM Member WHERE email = ? AND password = ?`;
@@ -204,6 +207,7 @@ router.get("/", (req, res) => {
 //route to logout
 router.get("/logout", (req, res) => {
   abs_member = null;
+  admin = false;
   res.redirect("/");
 });
 

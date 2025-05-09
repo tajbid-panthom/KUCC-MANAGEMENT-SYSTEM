@@ -47,15 +47,15 @@
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownEvent">
             <li>
-              <a class="dropdown-item" href="/currentevents/details"
-                >Current Event</a
+              <a class="dropdown-item" href="/upcomming/<%=upevent_id %>/details"
+                >Upcoming Event</a
               >
             </li>
             <li>
-              <a class="dropdown-item" href="/currentevents">Recent Event</a>
+              <a class="dropdown-item" href="/currentevents/<%=event_id %>/details">Current Event</a>
             </li>
             <li>
-              <a class="dropdown-item" href="/previousevents/details"
+              <a class="dropdown-item" href="/previousevents/<%=preEvent_id %>/details"
                 >Previous Event</a
               >
             </li>
@@ -97,14 +97,15 @@
 
       <!-- Right Aligned Buttons -->
       <div class="d-flex">
-        <!-- Using custom btn-cyan class (Ensure this class is defined in your main CSS) -->
-         <%if(abs_member===null){ %>
-        <a href="/signup" class="btn btn-cyan me-2">Sign Up</a>
-        <a href="/login" class="btn btn-cyan">Login</a>
-        <% } else { %>
-        <a href="/profile" class="btn btn-cyan me-2">Profile</a>
-        <a href="/logout" class="btn btn-cyan">Logout</a>
-        <% } %>
+        <% if(abs_member === null && admin === false) { %>
+          <a href="/signup" class="btn btn-cyan me-2">Sign Up</a>
+          <a href="/login" class="btn btn-cyan">Login</a>
+      <% } else { %>
+          <a href="<%= admin ? '/admin' : '/profile' %>" class="btn btn-cyan me-2">
+              <%= admin ? 'Admin' : 'Profile' %>
+          </a>
+          <a href="/logout" class="btn btn-cyan">Logout</a>
+      <% } %>
     </div>
   </div>
 </nav>

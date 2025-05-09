@@ -55,27 +55,26 @@
         <img src="/images/sala.jpg" class="card-img-top" alt="Event Image" />
         <div class="card-body">
           <a
-            href=""
+            href="/upcomming/<%=upEvent.event_id %>/details"
             class="text-decoration-none text-dark shadow-sm px-5 py-2 fw-medium"
           >
             <h5 class="card-title fw-bold mb-2">
-              Public Speaking Pros 2.0
+              <%=upEvent.title %>
               <i class="fa-solid fa-eye eye-icon"></i>
             </h5>
           </a>
           <p class="card-text text-muted small mb-3">
-            We are immensely grateful to Photoflick, our official photographic
-            partner for Public Speaking Pros 2.0
+            <%= upEvent.description %>
           </p>
         </div>
         <div
           class="card-footer bg-white border-0 pt-0 pb-3 d-flex justify-content-between align-items-center"
         >
           <small class="text-muted d-flex align-items-center">
-            <i class="bi bi-calendar-event me-1"></i> April 10, 2025
+            <i class="bi bi-calendar-event me-1"></i> <%= upEvent.date %>
           </small>
           <small class="text-muted d-flex align-items-center">
-            <i class="bi bi-clock me-1"></i> 5:00 PM
+            <i class="bi bi-clock me-1"></i> <%= upEvent.time %>
           </small>
         </div>
       </div>
@@ -92,34 +91,33 @@
     </h2>
 
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mb-5">
-      <% for(let i = 0; i < 3; i++) { %>
+      <% for(let pEvent of prevEvents) { %>
       <div class="col">
         <div class="card h-100 border-0 shadow-sm rounded-3 overflow-hidden">
           <img src="/images/sala.jpg" class="card-img-top" alt="Event Image" />
           <div class="card-body">
             <a
-              href="/previousevents/<%=event.event_id%>/details"
+              href="/previousevents/<%=pEvent.event_id%>/details"
               class="text-decoration-none text-dark shadow-sm px-5 py-2 fw-medium"
             >
               <h5 class="card-title fw-bold mb-2">
-                Public Speaking Pros 2.0
+                <%= pEvent.title %>
                 <i class="fa-solid fa-eye eye-icon"></i>
               </h5>
             </a>
 
             <p class="card-text text-muted small mb-3">
-              We are immensely grateful to Photoflick, our official photographic
-              partner for Public Speaking Pros 2.0
+              <%=pEvent.description %>
             </p>
           </div>
           <div
             class="card-footer bg-white border-0 pt-0 pb-3 d-flex justify-content-between align-items-center"
           >
             <small class="text-muted d-flex align-items-center">
-              <i class="bi bi-calendar-event me-1"></i> April 10, 2025
+              <i class="bi bi-calendar-event me-1"></i> <%= pEvent.event_date %>
             </small>
             <small class="text-muted d-flex align-items-center">
-              <i class="bi bi-clock me-1"></i> 5:00 PM
+              <i class="bi bi-clock me-1"></i> <%=pEvent.event_time %>
             </small>
           </div>
         </div>

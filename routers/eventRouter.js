@@ -16,9 +16,14 @@ eventRouter.get("/currentevents", (req, res) => {
   try {
     connection.query(q, (err, events) => {
       if (err) throw err;
+      shared.upevent_id = events[0].event_id;
+      shared.event_id = events[1].event_id;
+      shared.preEvent_id = events[2].event_id;
       res.render("home/event/eventOverview.ejs", {
         event: events[1],
         admin: shared.admin,
+        prevEvents: events.slice(2, events.length),
+        upEvent: events[0],
       });
     });
   } catch (error) {
@@ -69,6 +74,21 @@ eventRouter.get("/currentevents/:id/details", (req, res) => {
     connection.query(q, (err, events) => {
       if (err) throw err;
       res.render("home/event/eventDetails.ejs", {
+        event: events[0],
+        admin: shared.admin,
+        member_status: shared.member_status,
+      });
+    });
+  } catch (error) {
+    console.log(error);
+  }
+});
+eventRouter.get("/upcomming/:id/details", (req, res) => {
+  let q = `select * from Event where event_id = ${req.params.id};`;
+  try {
+    connection.query(q, (err, events) => {
+      if (err) throw err;
+      res.render("home/event/upcomingEventDetails.ejs", {
         event: events[0],
         admin: shared.admin,
         member_status: shared.member_status,
