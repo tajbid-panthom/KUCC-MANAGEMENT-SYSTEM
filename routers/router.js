@@ -1,7 +1,6 @@
 const express = require("express");
 const mysql = require("mysql2");
 const router = express.Router();
-const shared = require("./sharedState");
 
 const connection = mysql.createConnection({
   host: "localhost",
@@ -9,18 +8,16 @@ const connection = mysql.createConnection({
   password: "Tajbid01",
   database: "KUCC",
 });
-let abs_member = null;
-let admin = false;
 // Middleware to check if the user is logged in
 router.use((_, res, next) => {
-  res.locals.abs_member = abs_member;
+  res.locals.abs_member = global.shared.abs_member;
   next();
 });
 router.use((_, res, next) => {
-  res.locals.admin = admin;
-  res.locals.upevent_id = shared.upevent_id;
-  res.locals.event_id = shared.event_id;
-  res.locals.preEvent_id = shared.preEvent_id;
+  res.locals.admin = global.shared.admin;
+  res.locals.upevent_id = global.shared.upevent_id;
+  res.locals.event_id = global.shared.event_id;
+  res.locals.preEvent_id = global.shared.preEvent_id;
   next();
 });
 //route to login page
@@ -40,7 +37,7 @@ router.post("/login", (req, res) => {
     }
 
     if (adminResults.length > 0) {
-      shared.admin = true;
+      global.shared.admin = true;
       return res.redirect("/");
     }
 
@@ -53,9 +50,8 @@ router.post("/login", (req, res) => {
       }
 
       if (memberResults.length > 0) {
-        abs_member = memberResults[0].member_id;
-        shared.abs_member = abs_member;
-        shared.member_status = memberResults[0].status;
+        global.shared.abs_member = memberResults[0].member_id;
+        global.shared.member_status = memberResults[0].status;
         return res.redirect(`/`);
       } else {
         return res.redirect("/login?error=invalid");
@@ -120,7 +116,7 @@ router.post("/signup", (req, res) => {
 
 //route to profile
 router.get("/profile", (req, res) => {
-  let id = req.query.id || abs_member;
+  let id = req.query.id || global.shared.abs_member;
   let q = `select * from Member where member_id=${id};`;
   try {
     connection.query(q, (err, member) => {
@@ -191,28 +187,44 @@ router.get("/admin", (req, res) => {
   }
 });
 
-//all indexing
 router.get("/", (req, res) => {
-  let q = `select * from Company;`;
-  try {
-    connection.query(q, (err, companies) => {
-      if (err) throw err;
-      res.render("home/user/index.ejs", { companies });
+  const q = `SELECT * FROM Event ORDER BY event_id DESC;`;
+  const q2 = `select * from Company;`;
+
+  connection.query(q, (err, events) => {
+    if (err) {
+      console.error("DB error:", err);
+      return res.status(500).send("Database error");
+    }
+    connection.query(q2, (err, companies) => {
+      if (err) {
+        console.error("DB error:", err);
+        return res.status(500).send("Database error");
+      }
+      // Set global values
+      global.shared.upevent_id = events[0]?.event_id;
+      global.shared.event_id = events[1]?.event_id;
+      global.shared.preEvent_id = events[2]?.event_id;
+
+      // Render homepage with event data
+      res.render("home/user/index.ejs", {
+        event: events[1],
+        admin: global.shared.admin,
+        prevEvents: events.slice(2),
+        upEvent: events[0],
+        companies,
+      });
     });
-  } catch (error) {
-    console.log(error);
-  }
+  });
 });
 
 //route to logout
 router.get("/logout", (req, res) => {
-  abs_member = null;
-  admin = false;
+  global.shared.abs_member = null;
+  global.shared.admin = false;
   res.redirect("/");
 });
 
 module.exports = {
   router,
-  abs_member,
-  admin,
 };

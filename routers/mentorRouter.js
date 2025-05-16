@@ -32,7 +32,6 @@ mentorRouter.get("/mentors", (req, res) => {
         // Render the mentors overview initially
         res.render("home/mentor/mentorOverview.ejs", {
           mentors,
-          admin: shared.admin,
         });
       }
     });
@@ -51,7 +50,6 @@ mentorRouter.get("/mentors/:id/view", (req, res) => {
       let mentor = mentors[0];
       res.render("home/mentor/mentorDetails.ejs", {
         mentor,
-        admin: shared.admin,
       });
     });
   } catch (error) {

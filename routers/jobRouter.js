@@ -36,7 +36,6 @@ jobRouter.get("/jobs", (req, res) => {
         res.render("home/job/jobOverview.ejs", {
           jobs,
           totalJobs,
-          admin: shared.admin,
         });
       });
     });
@@ -69,8 +68,6 @@ jobRouter.get("/jobs/:id/details", (req, res) => {
 
       res.render("home/job/jobDetails.ejs", {
         job: jobs[0],
-        admin: shared.admin,
-        member_status: shared.member_status,
       });
     });
   } catch (error) {

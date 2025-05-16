@@ -24,7 +24,7 @@
         <span style="color: #28c3f5">Assistant Professor Mr. X</span>
       </p>
 
-      <% if(admin){ %>
+      <% if(global.shared.admin){ %>
       <a
         href="/seminars/new"
         class="btn btn-cyan btn-lg px-5 shadow-sm"
@@ -77,7 +77,7 @@
               <p class="card-text mb-4">
                 <%=seminar.date.toLocaleDateString() %>, <%=seminar.time %>
               </p>
-              <% if(member_status==="active"){ %>
+              <% if(global.shared.member_status==="active"){ %>
               <a href="#" class="btn btn-info text-white w-100 py-2 fw-medium"
                 >Book now</a
               >
@@ -106,7 +106,7 @@
           </div>
         </div>
       </div>
-      <% if(admin){ %>
+      <% if(global.shared.admin){ %>
       <div class="row mt-5">
         <div class="col-12 text-center">
           <div class="d-inline-block">

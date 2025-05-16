@@ -47,15 +47,20 @@
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownEvent">
             <li>
-              <a class="dropdown-item" href="/upcomming/<%=upevent_id %>/details"
+              <a class="dropdown-item" href="/currentevents"
+                >All Event</a
+              >
+            </li>
+            <li>
+              <a class="dropdown-item" href="/upcomming/<%=global.shared.upevent_id %>/details"
                 >Upcoming Event</a
               >
             </li>
             <li>
-              <a class="dropdown-item" href="/currentevents/<%=event_id %>/details">Current Event</a>
+              <a class="dropdown-item" href="/currentevents/<%=global.shared.event_id %>/details">Current Event</a>
             </li>
             <li>
-              <a class="dropdown-item" href="/previousevents/<%=preEvent_id %>/details"
+              <a class="dropdown-item" href="/previousevents/<%= global.shared.preEvent_id %>/details"
                 >Previous Event</a
               >
             </li>
@@ -97,12 +102,12 @@
 
       <!-- Right Aligned Buttons -->
       <div class="d-flex">
-        <% if(abs_member === null && admin === false) { %>
+        <% if(global.shared.abs_member === null && global.shared.admin === false) { %>
           <a href="/signup" class="btn btn-cyan me-2">Sign Up</a>
           <a href="/login" class="btn btn-cyan">Login</a>
       <% } else { %>
-          <a href="<%= admin ? '/admin' : '/profile' %>" class="btn btn-cyan me-2">
-              <%= admin ? 'Admin' : 'Profile' %>
+          <a href="<%= global.shared.admin ? '/admin' : '/profile' %>" class="btn btn-cyan me-2">
+              <%= global.shared.admin ? 'Admin' : 'Profile' %>
           </a>
           <a href="/logout" class="btn btn-cyan">Logout</a>
       <% } %>

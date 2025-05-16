@@ -1,4 +1,4 @@
-module.exports = {
+global.shared = {
   abs_member: null,
   member_status: null,
   admin: false,

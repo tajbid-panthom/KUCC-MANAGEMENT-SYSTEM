@@ -45,7 +45,7 @@
                 <%=event.event_date.toLocaleDateString() %> ,
                 <%=event.event_time %>
               </p>
-              <% if(member_status==="active"){ %>
+              <% if(global.shared.member_status==="active"){ %>
               <a
                 href="/currentevents/registration"
                 class="btn btn-info text-white w-100 py-2 fw-medium"
@@ -130,7 +130,7 @@
         </div>
       </div>
     </div>
-    <% if(admin){ %>
+    <% if(global.shared.admin){ %>
     <div class="row mt-5 pt-4 border-top border-white border-opacity-25">
       <div class="col-12 text-center">
         <form

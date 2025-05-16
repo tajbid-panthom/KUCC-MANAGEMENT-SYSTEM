@@ -26,7 +26,6 @@ companyRouter.get("/companies", (req, res) => {
         // Render the page initially
         res.render("home/company/companiesOverview.ejs", {
           companies,
-          admin: shared.admin,
         });
       }
     });
@@ -55,7 +54,6 @@ companyRouter.get("/companies/:id/details", (req, res) => {
       if (err) throw err;
       res.render("home/company/companyDetails.ejs", {
         company: company[0],
-        admin: shared.admin,
       });
     });
   } catch (error) {

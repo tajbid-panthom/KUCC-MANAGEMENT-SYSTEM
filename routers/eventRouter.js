@@ -2,6 +2,7 @@ const express = require("express");
 const mysql = require("mysql2");
 const shared = require("./sharedState");
 
+const eventRouter = express.Router();
 const connection = mysql.createConnection({
   host: "localhost",
   user: "root",
@@ -9,16 +10,14 @@ const connection = mysql.createConnection({
   database: "KUCC",
 });
 
-const eventRouter = express.Router();
-
 eventRouter.get("/currentevents", (req, res) => {
   let q = `select * from Event order by event_id desc;`;
   try {
     connection.query(q, (err, events) => {
       if (err) throw err;
-      shared.upevent_id = events[0].event_id;
-      shared.event_id = events[1].event_id;
-      shared.preEvent_id = events[2].event_id;
+      global.shared.upevent_id = events[0].event_id;
+      global.shared.event_id = events[1].event_id;
+      global.shared.preEvent_id = events[2].event_id;
       res.render("home/event/eventOverview.ejs", {
         event: events[1],
         admin: shared.admin,
@@ -30,8 +29,31 @@ eventRouter.get("/currentevents", (req, res) => {
     console.log(error);
   }
 });
-eventRouter.get("/feedback", (req, res) => {
-  res.render("home/event/feedback.ejs");
+eventRouter.get("/feedback/:id", (req, res) => {
+  let id = req.params.id;
+  let q = `select member_id,name from Member where member_id = ${global.shared.abs_member};`;
+  try {
+    connection.query(q, (err, member) =>
+      res.render("home/event/feedback.ejs", {
+        member: member[0],
+        event_id: id,
+      })
+    );
+  } catch (error) {
+    console.log(error);
+  }
+});
+eventRouter.post("/previousevents_feedback", (req, res) => {
+  let { member_id, event_id, comment } = req.body;
+  let q = `insert into Feedback (member_id,event_id,comment) values (${member_id},${event_id},'${comment}');`;
+  try {
+    connection.query(q, (err, result) => {
+      if (err) throw err;
+      res.redirect(`/previousevents/${event_id}/details`);
+    });
+  } catch (error) {
+    console.log(error);
+  }
 });
 //route to certificate page
 eventRouter.get("/certificate/:id", (req, res) => {
@@ -128,19 +150,43 @@ eventRouter.put("/currentevents/:id/details", (req, res) => {
 
 //route to previous events page
 eventRouter.get("/previousevents/:id/details", (req, res) => {
-  let q = `select * from Event,Feedback,Member where Event.event_id = ${req.params.id} and Feedback.event_id = Event.event_id and Feedback.member_id=Member.member_id;`;
-  try {
-    connection.query(q, (err, events) => {
-      if (err) throw err;
+  const eventId = req.params.id;
+
+  const eventQuery = `
+    SELECT * FROM Event
+    WHERE event_id = ?
+  `;
+
+  const feedbackQuery = `
+    SELECT M.name, F.comment
+    FROM Member M
+    JOIN Feedback F ON M.member_id = F.member_id
+    WHERE F.event_id = ?
+    order by F.feedback_id desc;
+  `;
+
+  connection.query(eventQuery, [eventId], (err, eventResults) => {
+    if (err) {
+      console.error("Error fetching event:", err);
+      return res.status(500).send("Failed to load event details");
+    }
+
+    if (eventResults.length === 0) {
+      return res.status(404).send("Event not found");
+    }
+
+    connection.query(feedbackQuery, [eventId], (err, feedbackResults) => {
+      if (err) {
+        console.error("Error fetching feedback:", err);
+        return res.status(500).send("Failed to load feedback");
+      }
+
       res.render("home/event/previousEventDetails.ejs", {
-        event: events[0],
-        admin: shared.admin,
-        member_status: shared.member_status,
+        event: eventResults[0],
+        feedbacks: feedbackResults,
       });
     });
-  } catch (error) {
-    console.log(error);
-  }
+  });
 });
 
 module.exports = eventRouter;

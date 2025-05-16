@@ -114,7 +114,7 @@
         </div>
       </div>
     </div>
-    <% if(member_status==="active") {%>
+    <% if(global.shared.member_status==="active") {%>
     <div class="container text-center mb-5">
       <a
         href="/certificate/<%=event.event_id %>"
@@ -136,27 +136,29 @@
 
 <section class="comments-section py-5" style="background-color: #d4f5fc">
   <div class="container">
-    <% if(member_status==="active") {%>
+    <% if(global.shared.member_status==="active") {%>
     <div class="container text-center mb-5">
-      <a
-        href="/feedback"
-        class="btn btn-info btn-lg text-white rounded shadow-sm px-5 py-2 fw-medium border border-white"
-        role="button"
-        style="
-          --bs-btn-bg: #00c3ff;
-          --bs-btn-border-color: #fff;
-          --bs-btn-hover-bg: #00a8e0;
-          --bs-btn-hover-border-color: #fff;
-        "
-      >
-        Create New Feedback
-      </a>
+      <form action="/feedback/<%=event.event_id %>" method="GET">
+        <button
+          class="btn btn-info btn-lg text-white rounded shadow-sm px-5 py-2 fw-medium border border-white"
+          type="submit"
+          style="
+            --bs-btn-bg: #00c3ff;
+            --bs-btn-border-color: #fff;
+            --bs-btn-hover-bg: #00a8e0;
+            --bs-btn-hover-border-color: #fff;
+          "
+        >
+          Create New Feedback
+        </button>
+      </form>
     </div>
     <% } %>
     <div class="bg-white p-4 p-md-5 rounded-3 shadow-sm">
       <h3 class="fw-bold mb-4">Feedback</h3>
 
       <div class="comments-list">
+        <% feedbacks.forEach(feedback => { %>
         <div class="comment-item d-flex align-items-start mb-4">
           <img
             src="https://github.com/shadcn.png"
@@ -166,16 +168,17 @@
             class="rounded-circle me-3"
           />
           <div class="flex-grow-1">
-            <h6 class="fw-bold mb-1"><%=event.name %></h6>
-            <p class="text-muted mb-2 small"><%=event.comment %></p>
+            <h6 class="fw-bold mb-1"><%=feedback.name %></h6>
+            <p class="text-muted mb-2 small"><%=feedback.comment %></p>
             <div
               class="comment-actions d-flex align-items-center gap-2 text-muted small"
             >
               <span>•</span>
-              <span>Just now</span>
+              <span><%=feedback.created_at %></span>
             </div>
           </div>
         </div>
+        <% }) %>
       </div>
 
       <div class="text-center mt-4">

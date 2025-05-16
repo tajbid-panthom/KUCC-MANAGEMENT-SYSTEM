@@ -19,11 +19,11 @@ seminarRouter.get("/seminars", (req, res) => {
       let seminar = result[0];
       res.render("home/seminar/seminarOverview.ejs", {
         seminar,
-        admin: shared.admin,
-        member_status: shared.member_status,
       });
     });
-  } catch (error) {}
+  } catch (error) {
+    console.log(error);
+  }
 });
 
 //route to create seminar
