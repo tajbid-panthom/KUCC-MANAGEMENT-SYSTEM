@@ -1,7 +1,7 @@
 <% layout("/layouts/boilerplate.ejs") %>
 
 <section
-  class="registration-form-section py-5 bg-white"
+  class="registration-form-section py-3 bg-white"
   style="background: linear-gradient(to bottom, #00b4d8, #caf0f8)"
 >
   <div class="container">
@@ -14,10 +14,17 @@
       />
     </div>
 
-    <form action="/signup" method="POST">
+    <form action="/signup" method="POST" class="needs-validation" novalidate>
       <div class="row g-4">
         <div class="col-lg-4">
-          <div class="mb-3">
+          <div
+            class="mb-3 position-relative"
+            style="
+              background-color: #fff;
+              padding: 7px 10px;
+              border-radius: 2px;
+            "
+          >
             <label for="regName" class="form-label small fw-medium"
               >Name:
             </label>
@@ -29,8 +36,21 @@
               placeholder="Enter your name"
               required
             />
+            <span
+              class="position-absolute top-0 start-100 translate-middle p-1 bg-danger border border-light rounded-circle"
+            >
+              <span class="visually-hidden">New alerts</span>
+            </span>
+            <div class="invalid-feedback">Please enter Name.</div>
           </div>
-          <div class="mb-3">
+          <div
+            class="mb-3 position-relative"
+            style="
+              background-color: #fff;
+              padding: 7px 10px;
+              border-radius: 2px;
+            "
+          >
             <label for="regStudentId" class="form-label small fw-medium"
               >Student ID:</label
             >
@@ -42,8 +62,21 @@
               placeholder="Enter your student id"
               required
             />
+            <span
+              class="position-absolute top-0 start-100 translate-middle p-1 bg-danger border border-light rounded-circle"
+            >
+              <span class="visually-hidden">New alerts</span>
+            </span>
+            <div class="invalid-feedback">Please enter Student ID</div>
           </div>
-          <div class="mb-3">
+          <div
+            class="mb-3 position-relative"
+            style="
+              background-color: #fff;
+              padding: 7px 10px;
+              border-radius: 2px;
+            "
+          >
             <label for="regDiscipline" class="form-label small fw-medium"
               >Discipline:</label
             >
@@ -66,8 +99,21 @@
               <option value="PHARMACHY">Pharmachy</option>
               <option value="BGE">Bioteachnology & Genetics Engineering</option>
             </select>
+            <span
+              class="position-absolute top-0 start-100 translate-middle p-1 bg-danger border border-light rounded-circle"
+            >
+              <span class="visually-hidden">New alerts</span>
+            </span>
+            <div class="invalid-feedback">Please select Discipline</div>
           </div>
-          <div class="mb-3">
+          <div
+            class="mb-3 position-relative"
+            style="
+              background-color: #fff;
+              padding: 7px 10px;
+              border-radius: 2px;
+            "
+          >
             <label for="regSkills" class="form-label small fw-medium"
               >Skill:</label
             >
@@ -82,7 +128,14 @@
         </div>
 
         <div class="col-lg-4">
-          <div class="mb-3">
+          <div
+            class="mb-3 position-relative"
+            style="
+              background-color: #fff;
+              padding: 7px 10px;
+              border-radius: 2px;
+            "
+          >
             <label for="regEmail" class="form-label small fw-medium"
               >Email:</label
             >
@@ -94,8 +147,21 @@
               placeholder="info@gmail.com"
               required
             />
+            <span
+              class="position-absolute top-0 start-100 translate-middle p-1 bg-danger border border-light rounded-circle"
+            >
+              <span class="visually-hidden">New alerts</span>
+            </span>
+            <div class="invalid-feedback">Please enter a valid email.</div>
           </div>
-          <div class="mb-3 position-relative">
+          <div
+            class="mb-3 position-relative"
+            style="
+              background-color: #fff;
+              padding: 7px 10px;
+              border-radius: 2px;
+            "
+          >
             <label for="regPassword" class="form-label small fw-medium"
               >Password:</label
             >
@@ -112,8 +178,21 @@
             >
               <i class="bi bi-eye-fill text-secondary"></i>
             </span>
+            <span
+              class="position-absolute top-0 start-100 translate-middle p-1 bg-danger border border-light rounded-circle"
+            >
+              <span class="visually-hidden">New alerts</span>
+            </span>
+            <div class="invalid-feedback">Please enter your password.</div>
           </div>
-          <div class="mb-3 position-relative">
+          <div
+            class="mb-3 position-relative"
+            style="
+              background-color: #fff;
+              padding: 7px 10px;
+              border-radius: 2px;
+            "
+          >
             <label for="regConfirmPassword" class="form-label small fw-medium"
               >Confirm Password:</label
             >
@@ -130,8 +209,21 @@
             >
               <i class="bi bi-eye-fill text-secondary"></i>
             </span>
+            <span
+              class="position-absolute top-0 start-100 translate-middle p-1 bg-danger border border-light rounded-circle"
+            >
+              <span class="visually-hidden">New alerts</span>
+            </span>
+            <div class="invalid-feedback">Please enter your password.</div>
           </div>
-          <div class="mb-3">
+          <div
+            class="mb-3 position-relative"
+            style="
+              background-color: #fff;
+              padding: 7px 10px;
+              border-radius: 2px;
+            "
+          >
             <label for="regPaymentMethod" class="form-label small fw-medium"
               >Payment Method:</label
             >
@@ -148,8 +240,21 @@
               <option value="Nagad">Nagad</option>
               <option value="Rocket">Rocket</option>
             </select>
+            <span
+              class="position-absolute top-0 start-100 translate-middle p-1 bg-danger border border-light rounded-circle"
+            >
+              <span class="visually-hidden">New alerts</span>
+            </span>
+            <div class="invalid-feedback">Payment method required</div>
           </div>
-          <div class="mb-3">
+          <div
+            class="mb-3 position-relative"
+            style="
+              background-color: #fff;
+              padding: 7px 10px;
+              border-radius: 2px;
+            "
+          >
             <label for="regExpectationClub" class="form-label small fw-medium"
               >What do you expect from club?:</label
             >
@@ -164,7 +269,14 @@
         </div>
 
         <div class="col-lg-4">
-          <div class="mb-3">
+          <div
+            class="mb-3 position-relative"
+            style="
+              background-color: #fff;
+              padding: 7px 10px;
+              border-radius: 2px;
+            "
+          >
             <label for="regHomeTown" class="form-label small fw-medium"
               >Home Town:</label
             >
@@ -176,8 +288,21 @@
               placeholder="Enter your home town"
               required
             />
+            <span
+              class="position-absolute top-0 start-100 translate-middle p-1 bg-danger border border-light rounded-circle"
+            >
+              <span class="visually-hidden">New alerts</span>
+            </span>
+            <div class="invalid-feedback">Please enter your home town.</div>
           </div>
-          <div class="mb-3">
+          <div
+            class="mb-3 position-relative"
+            style="
+              background-color: #fff;
+              padding: 7px 10px;
+              border-radius: 2px;
+            "
+          >
             <label for="regMobileNo" class="form-label small fw-medium"
               >Mobile No:</label
             >
@@ -189,8 +314,21 @@
               placeholder="Enter your mobile no"
               required
             />
+            <span
+              class="position-absolute top-0 start-100 translate-middle p-1 bg-danger border border-light rounded-circle"
+            >
+              <span class="visually-hidden">New alerts</span>
+            </span>
+            <div class="invalid-feedback">Please enter your phone number</div>
           </div>
-          <div class="mb-3">
+          <div
+            class="mb-3 position-relative"
+            style="
+              background-color: #fff;
+              padding: 7px 10px;
+              border-radius: 2px;
+            "
+          >
             <label for="regTransactionId" class="form-label small fw-medium"
               >Transaction Id:</label
             >
@@ -202,8 +340,21 @@
               placeholder="Enter your transaction id"
               required
             />
+            <span
+              class="position-absolute top-0 start-100 translate-middle p-1 bg-danger border border-light rounded-circle"
+            >
+              <span class="visually-hidden">New alerts</span>
+            </span>
+            <div class="invalid-feedback">Transaction ID required</div>
           </div>
-          <div class="mb-3">
+          <div
+            class="mb-3 position-relative"
+            style="
+              background-color: #fff;
+              padding: 7px 10px;
+              border-radius: 2px;
+            "
+          >
             <label for="regWhyHire" class="form-label small fw-medium"
               >Why will we hire you?:</label
             >

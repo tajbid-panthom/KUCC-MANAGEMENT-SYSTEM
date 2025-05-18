@@ -13,13 +13,31 @@ const connection = mysql.createConnection({
 //details of the first seminar
 seminarRouter.get("/seminars", (req, res) => {
   let q = "SELECT * FROM Seminar order by session_id desc";
+  let q2 = `select mentor_id from Conduction where session_id = ?`;
+  let q3 = `select * from Mentor where mentor_id = ?`;
   try {
     connection.query(q, (err, result) => {
       if (err) throw err;
       let seminar = result[0];
-      res.render("home/seminar/seminarOverview.ejs", {
-        seminar,
-      });
+      try {
+        connection.query(q2, [seminar.session_id], (err2, results) => {
+          if (err2) throw err2;
+          let mentor_id = results[0].mentor_id;
+          try {
+            connection.query(q3, [mentor_id], (err3, mentors) => {
+              if (err3) throw err3;
+              res.render("home/seminar/seminarOverview.ejs", {
+                seminar,
+                mentor: mentors[0],
+              });
+            });
+          } catch (error3) {
+            console.log(error3);
+          }
+        });
+      } catch (error2) {
+        console.log(error2);
+      }
     });
   } catch (error) {
     console.log(error);
@@ -28,20 +46,53 @@ seminarRouter.get("/seminars", (req, res) => {
 
 //route to create seminar
 seminarRouter.get("/seminars/new", (req, res) => {
-  res.render("home/seminar/createSeminar.ejs");
+  let q = `select mentor_id,mentor_name from Mentor;`;
+  try {
+    connection.query(q, (err, mentors) => {
+      if (err) throw err;
+      res.render("home/seminar/createSeminar.ejs", { mentors });
+    });
+  } catch (error) {
+    console.log(error);
+  }
 });
 
 seminarRouter.post("/seminars", (req, res) => {
-  let { session_type, description, counseling_link, time, date } = req.body;
-  let q = `insert into Seminar (date, time, session_type, description, counseling_link) values('${date}','${time}','${session_type}','${description}','${counseling_link}');`;
-  try {
-    connection.query(q, (err, result) => {
-      if (err) throw err;
-      res.redirect("/seminars");
-    });
-  } catch (error) {
-    console.log(err);
-  }
+  const { session_type, mentor_id, description, counseling_link, time, date } =
+    req.body;
+
+  const insertSeminarQuery = `
+    INSERT INTO Seminar (date, time, session_type, description, counseling_link)
+    VALUES (?, ?, ?, ?, ?)
+  `;
+  const insertConductionQuery = `INSERT INTO Conduction (mentor_id, session_id) VALUES (?, ?)`;
+
+  connection.query(
+    insertSeminarQuery,
+    [date, time, session_type, description, counseling_link],
+    (err, result) => {
+      if (err) {
+        console.error("Insert Seminar Error:", err);
+        return res.status(500).send("Failed to insert seminar");
+      }
+
+      // Get the last inserted session_id
+      const seminar_id = result.insertId;
+
+      connection.query(
+        insertConductionQuery,
+        [mentor_id, seminar_id],
+        (err2, _) => {
+          if (err2) {
+            console.error("Insert Conduction Error:", err2);
+            return res.status(500).send("Failed to assign mentor");
+          }
+
+          res.redirect("/seminars");
+        }
+      );
+    }
+  );
 });
 
 //move to edit route

@@ -1,219 +1,229 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;700&display=swap');
-body{
-    margin: 0;
-    padding: 0;
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;700&display=swap");
+body {
+  margin: 0;
+  padding: 0;
 }
 .btn-cyan {
-    color: #fff;
-    background-color: #00aeff;
-    border-color: #00aeff;
+  color: #fff;
+  background-color: #00aeff;
+  border-color: #00aeff;
 }
 .btn-cyan:hover {
-    color: #fff;
-    background-color: #008fcc;
-    border-color: #0086bf;
+  color: #fff;
+  background-color: #008fcc;
+  border-color: #0086bf;
 }
 @media (min-width: 992px) {
-    .navbar-nav .nav-item.dropdown:hover > .dropdown-menu {
-        display: block;
-        margin-top: 0;
-    }
+  .navbar-nav .nav-item.dropdown:hover > .dropdown-menu {
+    display: block;
+    margin-top: 0;
+  }
 }
 
 .navbar-brand img {
-    height: 500px;
-    width: 50px;
-    border-radius: 50%;
+  height: 500px;
+  width: 50px;
+  border-radius: 50%;
 }
 
 .job-section-title-bar {
-    background-color: #28c3f5;
-  }
+  background-color: #28c3f5;
+}
 
 .job-section-content {
-    background-color: #e0f7ff;
+  background-color: #e0f7ff;
 }
 
 .stat-icon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 45px;
-    height: 45px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 45px;
 }
-.bg-info-subtle { background-color: #cff4fc !important; }
-.text-info { color: #055160 !important; }
-.bg-primary-subtle { background-color: #cfe2ff !important; }
-.text-primary { color: #0a58ca !important; }
-.bg-secondary-subtle { background-color: #e2e3e5 !important; }
-.text-secondary { color: #41464b !important; }
+.bg-info-subtle {
+  background-color: #cff4fc !important;
+}
+.text-info {
+  color: #055160 !important;
+}
+.bg-primary-subtle {
+  background-color: #cfe2ff !important;
+}
+.text-primary {
+  color: #0a58ca !important;
+}
+.bg-secondary-subtle {
+  background-color: #e2e3e5 !important;
+}
+.text-secondary {
+  color: #41464b !important;
+}
 
 .event-section-title-bar {
-    background-color: #28c3f5;
-  }
-
-  .event-promo-section {
-     background: url('/images/event_bg.jpg') no-repeat center center;
-     background-size: cover;
-     min-height: 60vh; 
-  }
-
-  .btn-custom-cyan { 
-      background-color: #28c3f5;
-      border-color: #28c3f5;
-      color: white;
-  }
-  .btn-custom-cyan:hover {
-      background-color: #1daee3; 
-      border-color: #1daee3;
-      color: white;
-  }
-  .company-section-title-bar {
-    background-color: #4dd0e1; 
-  }
-  .company-section-content {
-    background-color: #b2ebf2; 
-  }
-
-  .company-logo-placeholder {
-     width: 50px;
-     height: 50px;
-     background-color: #ec407a; 
-     display: flex;
-     align-items: center;
-     justify-content: center;
-  }
-
-  .badge-custom-featured { 
-      background-color: #fce4ec;
-      color: #ad1457;
-  }
-
-  .company-card-footer-link { 
-     background-color: #e3f2fd; 
-     color: #0d6efd !important; 
-     padding: 0.75rem 1rem;
-     text-align: center;
-     text-decoration: none;
-     font-weight: 600;
-     display: block;
-  }
-  .company-card-footer-link:hover {
-     background-color: #d0e6fa;
-  }
-
-  .seminar-section-title-bar {
-    background-color: #4dd0e1;
-  }
-
-  .seminar-promo-section {
-     background: url('/images/seminar.jpg') no-repeat center center;
-     background-size: cover;
-     min-height: 65vh; 
-  }
-
-  .btn-custom-cyan { 
-      background-color: #28c3f5;
-      border: none; 
-      color: white;
-  }
-  .btn-custom-cyan:hover {
-      background-color: #1daee3; 
-      color: white;
-  }
-
-  .text-highlight-cyan {
-      color: #28c3f5;
-  }
-  .mentors-section {
-    background: linear-gradient(to bottom, #4dd0e1, #80deea);
-  }
-
-  .btn-custom-cyan-lighter { 
-      background-color: #26c6da; 
-      border: none;
-      color: white;
-  }
-  .btn-custom-cyan-lighter:hover {
-      background-color: #1fb8ce; 
-      color: white;
-  }
-
-  .btn-custom-indigo { 
-       background-color: #1a237e; 
-       border: none;
-       color: white;
-   }
-   .btn-custom-indigo:hover {
-       background-color: #131a63; 
-       color: white;
-   }
-
-   .mentor-profile-section {
-    background: linear-gradient(to bottom right, #3cd1e8, #4dd0e1);
-    min-height: 100vh;
+  background-color: #28c3f5;
 }
-.eye-icon{
-    font-size: 20px;
-    transition:all .3s ease-in-out;
-    cursor: pointer !important;
+
+.event-promo-section {
+  background: url("/images/event_bg.jpg") no-repeat center center;
+  background-size: cover;
+  min-height: 60vh;
 }
-.eye-icon:hover{
-    transform: scale(1.1);
-    color: #00aeff;
-    
+
+.btn-custom-cyan {
+  background-color: #28c3f5;
+  border-color: #28c3f5;
+  color: white;
+}
+.btn-custom-cyan:hover {
+  background-color: #1daee3;
+  border-color: #1daee3;
+  color: white;
+}
+.company-section-title-bar {
+  background-color: #4dd0e1;
+}
+.company-section-content {
+  background-color: #b2ebf2;
+}
+
+.company-logo-placeholder {
+  width: 50px;
+  height: 50px;
+  background-color: #ec407a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.badge-custom-featured {
+  background-color: #fce4ec;
+  color: #ad1457;
+}
+
+.company-card-footer-link {
+  background-color: #e3f2fd;
+  color: #0d6efd !important;
+  padding: 0.75rem 1rem;
+  text-align: center;
+  text-decoration: none;
+  font-weight: 600;
+  display: block;
+}
+.company-card-footer-link:hover {
+  background-color: #d0e6fa;
+}
+
+.seminar-section-title-bar {
+  background-color: #4dd0e1;
+}
+
+.seminar-promo-section {
+  background: url("/images/seminar.jpg") no-repeat center center;
+  background-size: cover;
+  min-height: 65vh;
+}
+
+.btn-custom-cyan {
+  background-color: #28c3f5;
+  border: none;
+  color: white;
+}
+.btn-custom-cyan:hover {
+  background-color: #1daee3;
+  color: white;
+}
+
+.text-highlight-cyan {
+  color: #28c3f5;
+}
+.mentors-section {
+  background: linear-gradient(to bottom, #4dd0e1, #80deea);
+}
+
+.btn-custom-cyan-lighter {
+  background-color: #26c6da;
+  border: none;
+  color: white;
+}
+.btn-custom-cyan-lighter:hover {
+  background-color: #1fb8ce;
+  color: white;
+}
+
+.btn-custom-indigo {
+  background-color: #1a237e;
+  border: none;
+  color: white;
+}
+.btn-custom-indigo:hover {
+  background-color: #131a63;
+  color: white;
+}
+
+.mentor-profile-section {
+  background: linear-gradient(to bottom right, #3cd1e8, #4dd0e1);
+  min-height: 100vh;
+}
+.eye-icon {
+  font-size: 20px;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer !important;
+}
+.eye-icon:hover {
+  transform: scale(1.1);
+  color: #00aeff;
 }
 
 .certificate-body {
-    font-family: 'Lato', sans-serif; /* Default font */
+  font-family: "Lato", sans-serif; /* Default font */
 }
 .certificate-title {
-     font-family: 'Playfair Display', serif; /* Serif font for title */
-     letter-spacing: 2px;
+  font-family: "Playfair Display", serif; /* Serif font for title */
+  letter-spacing: 2px;
 }
 .certificate-name {
-    font-family: 'Playfair Display', serif; /* Serif font for name */
-    color: #a07e3b; /* Gold-like color */
+  font-family: "Playfair Display", serif; /* Serif font for name */
+  color: #a07e3b; /* Gold-like color */
 }
 .certificate-hr {
-    border: none;
-    border-top: 1px solid #6c757d; /* Gray line */
-    max-width: 200px; /* Limit line width */
-    margin-left: auto;
-    margin-right: auto;
+  border: none;
+  border-top: 1px solid #6c757d; /* Gray line */
+  max-width: 200px; /* Limit line width */
+  margin-left: auto;
+  margin-right: auto;
 }
 
-  
 .company-bg-now {
-    background: url('/images/cn.jpg') no-repeat center center;
-    background-size: cover;
-    width: 100%;
-    height: 40vh;
-    position: relative;
-  }
-  
-  /* Optional shadow overlay */
-  .company-bg-now::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.3);
-  }
-  
-  /* Make sure content appears above overlay */
-  .company-bg-now > .container {
-    position: relative;
-    z-index: 1;
-  }
+  background: url("/images/cn.jpg") no-repeat center center;
+  background-size: cover;
+  width: 100%;
+  height: 40vh;
+  position: relative;
+}
 
-  .user-card{
-    width: 100% !important;
-    height: 400px !important;
-  }
+/* Optional shadow overlay */
+.company-bg-now::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.3);
+}
 
-.cursor-pointer{
-    cursor:pointer !important;
+/* Make sure content appears above overlay */
+.company-bg-now > .container {
+  position: relative;
+  z-index: 1;
+}
+
+.user-card {
+  width: 100% !important;
+  height: 400px !important;
+}
+
+.cursor-pointer {
+  cursor: pointer !important;
 }

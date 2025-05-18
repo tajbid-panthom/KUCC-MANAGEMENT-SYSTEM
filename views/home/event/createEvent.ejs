@@ -11,7 +11,12 @@
 
     <div class="row justify-content-center">
       <div class="col-md-10 col-lg-8">
-        <form action="/currentevents" method="POST">
+        <form
+          action="/currentevents"
+          method="POST"
+          class="needs-validation"
+          novalidate
+        >
           <div class="mb-3">
             <label for="eventTitleInput" class="form-label text-white fw-medium"
               >Event Title</label
@@ -24,6 +29,7 @@
               placeholder="Enter your Title"
               required
             />
+            <div class="invalid-feedback">Please enter event title.</div>
           </div>
 
           <div class="mb-3">
@@ -38,6 +44,7 @@
               placeholder="Enter your Venue"
               required
             />
+            <div class="invalid-feedback">Please enter event venue.</div>
           </div>
 
           <div class="row mb-3">
@@ -53,6 +60,7 @@
                 placeholder="Enter your time"
                 required
               />
+              <div class="invalid-feedback">Please enter event time.</div>
             </div>
             <div class="col-md-6 mb-3 mb-md-0">
               <label for="dateInput" class="form-label text-white fw-medium"
@@ -66,6 +74,7 @@
                 placeholder="Enter your Date"
                 required
               />
+              <div class="invalid-feedback">Please enter event date.</div>
             </div>
           </div>
 
@@ -84,6 +93,7 @@
               placeholder="Type here..."
               required
             ></textarea>
+            <div class="invalid-feedback">Please enter event description.</div>
           </div>
 
           <div class="d-grid">

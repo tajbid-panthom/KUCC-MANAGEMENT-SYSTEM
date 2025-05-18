@@ -138,20 +138,57 @@
         >
           Edit
         </a>
-
-        <form
-          action="/jobs/<%=job.job_id %>/delete?_method=DELETE"
-          method="POST"
-          style="display: inline-block"
-          onsubmit="return confirm('Are you sure you want to remove this job listing?');"
-        >
+        <div class="d-inline-block">
           <button
-            type="submit"
-            class="btn btn-dark rounded px-5 py-2 fw-medium"
+            type="button"
+            class="btn btn-dark btn-lg px-5 rounded"
+            data-bs-toggle="modal"
+            data-bs-target="#deleteJob-<%=job.job_id %>"
           >
             Remove
           </button>
-        </form>
+
+          <div class="modal fade" id="deleteJob-<%=job.job_id %>" tabindex="-1">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Confirm</h5>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                  ></button>
+                </div>
+                <div class="modal-body">
+                  <p>
+                    Are you sure you want to remove
+                    <strong><%= job.role %> </strong>?
+                  </p>
+                  <p class="text-danger">This action cannot be undone.</p>
+                </div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal"
+                  >
+                    Cancel
+                  </button>
+
+                  <form
+                    action="/jobs/<%=job.job_id %>/delete?_method=DELETE"
+                    method="POST"
+                    class="d-inline"
+                  >
+                    <button type="submit" class="btn btn-danger">
+                      Confirm Remove
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <% } %>

@@ -8,7 +8,7 @@
 
     <div class="row justify-content-center">
       <div class="col-md-8 col-lg-7">
-        <form action="/jobs" method="POST">
+        <form action="/jobs" method="POST" class="needs-validation" novalidate>
           <div class="row mb-2">
             <div class="col-md-6 mb-3 mb-md-0">
               <label for="jobTitleInput" class="form-label text-white fw-medium"
@@ -22,6 +22,7 @@
                 placeholder="Job role"
                 required
               />
+              <div class="invalid-feedback">Please enter job role.</div>
             </div>
             <div class="col-md-6 mb-3 mb-md-0">
               <label for="jobTypeInput" class="form-label text-white fw-medium"
@@ -35,6 +36,7 @@
                 placeholder="Job Type"
                 required
               />
+              <div class="invalid-feedback">Please enter job type.</div>
             </div>
           </div>
 
@@ -57,6 +59,7 @@
               </option>
               <% } %>
             </select>
+            <div class="invalid-feedback">Please enter company name.</div>
           </div>
 
           <div class="mb-2">
@@ -73,6 +76,7 @@
               placeholder="Enter job description"
               required
             ></textarea>
+            <div class="invalid-feedback">Please enter job description.</div>
           </div>
 
           <div class="row mb-2">
@@ -92,6 +96,7 @@
                 <option value="40000">40,000</option>
                 <option value="40000">40,000+</option>
               </select>
+              <div class="invalid-feedback">Please enter job salary.</div>
             </div>
             <div class="col-md-6">
               <label for="locationInput" class="form-label text-white fw-medium"
@@ -105,6 +110,7 @@
                 placeholder="Enter your location"
                 required
               />
+              <div class="invalid-feedback">Please enter job locaiton.</div>
             </div>
           </div>
           <div class="mb-4">
@@ -119,6 +125,7 @@
               placeholder="Enter Deadline"
               required
             />
+            <div class="invalid-feedback">Please enter job deadline.</div>
           </div>
 
           <div class="d-grid">

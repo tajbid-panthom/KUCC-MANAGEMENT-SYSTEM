@@ -54,7 +54,8 @@ router.post("/login", (req, res) => {
         global.shared.member_status = memberResults[0].status;
         return res.redirect(`/`);
       } else {
-        return res.redirect("/login?error=invalid");
+        global.shared.error = "invalid";
+        return res.redirect("/login");
       }
     });
   });
@@ -222,6 +223,7 @@ router.get("/", (req, res) => {
 router.get("/logout", (req, res) => {
   global.shared.abs_member = null;
   global.shared.admin = false;
+  global.shared.error = null;
   res.redirect("/");
 });
 

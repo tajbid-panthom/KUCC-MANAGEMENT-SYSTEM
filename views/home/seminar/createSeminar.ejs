@@ -1,14 +1,19 @@
 <% layout("/layouts/boilerplate.ejs") %>
 
 <section
-  class="create-seminar-section d-flex align-items-center justify-content-center py-5 min-vh-100 bg-info bg-gradient"
+  class="create-seminar-section d-flex align-items-center justify-content-center py-2 min-vh-100 bg-info bg-gradient"
 >
   <div class="container">
-    <h2 class="text-center text-white fw-bold mb-5">Create New Seminar</h2>
+    <h2 class="text-center text-white fw-bold mb-2">Create New Seminar</h2>
 
     <div class="row justify-content-center">
       <div class="col-md-8 col-lg-7">
-        <form action="/seminars" method="POST">
+        <form
+          action="/seminars"
+          method="POST"
+          class="needs-validation"
+          novalidate
+        >
           <div class="mb-3">
             <label
               for="seminarTypeInput"
@@ -23,6 +28,34 @@
               placeholder="Enter seminar type"
               required
             />
+            <div class="invalid-feedback">Please enter seminar type.</div>
+          </div>
+          <div class="mb-3 position-relative">
+            <label
+              for="mentorNameInput"
+              class="form-label text-white fw-medium"
+            >
+              Your Mentor
+            </label>
+            <select
+              name="mentor_id"
+              id="mentorNameInput"
+              class="form-control form-control-lg rounded pe-5"
+              style="color: #222222 !important"
+              required
+            >
+              <option selected disabled>Select Mentor</option>
+              <% for(mentor of mentors){ %>
+              <option value="<%=mentor.mentor_id %>">
+                <%=mentor.mentor_name %>
+              </option>
+              <% } %>
+            </select>
+            <i
+              class="bi bi-chevron-down position-absolute"
+              style="top: 58%; right: 20px; pointer-events: none"
+            ></i>
+            <div class="invalid-feedback">Please select mentor.</div>
           </div>
 
           <div class="mb-3">
@@ -39,6 +72,7 @@
               placeholder="Enter seminar description"
               required
             />
+            <div class="invalid-feedback">Please enter description.</div>
           </div>
 
           <div class="mb-3">
@@ -55,6 +89,9 @@
               placeholder="Enter seminar session joining link"
               required
             />
+            <div class="invalid-feedback">
+              Please enter semianr session link.
+            </div>
           </div>
 
           <div class="row mb-4">
@@ -72,6 +109,7 @@
                 placeholder="Enter start time"
                 required
               />
+              <div class="invalid-feedback">Please enter seminar time.</div>
             </div>
             <div class="col-md-6">
               <label
@@ -87,6 +125,7 @@
                 placeholder="Enter Start Date"
                 required
               />
+              <div class="invalid-feedback">Please enter seminar date.</div>
             </div>
           </div>
 
@@ -108,6 +147,3 @@
     </div>
   </div>
 </section>
-
-<%# ========================== %> <%# Create Seminar Section End %> <%#
-========================== %>

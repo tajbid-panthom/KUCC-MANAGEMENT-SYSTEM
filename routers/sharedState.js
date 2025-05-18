@@ -6,4 +6,6 @@ global.shared = {
   upevent_id: null,
   preEvent_id: null,
   event_id: null,
+  participated: null,
+  error: null,
 };

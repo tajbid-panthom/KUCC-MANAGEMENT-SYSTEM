@@ -68,8 +68,34 @@ eventRouter.get("/certificate/:id", (req, res) => {
     console.log(error);
   }
 });
-eventRouter.get("/currentevents/registration", (req, res) => {
-  res.render("home/event/eventRegistration.ejs");
+eventRouter.get("/currentevents/:id/registration", (req, res) => {
+  let id = req.params.id;
+  let member_id = global.shared.abs_member;
+  let q = `select * from Member where member_id = ${member_id};`;
+  try {
+    connection.query(q, (err, member) =>
+      res.render("home/event/eventRegistration.ejs", {
+        member: member[0],
+        event_id: id,
+      })
+    );
+  } catch (error) {
+    console.log(error);
+  }
+});
+eventRouter.post("/registration/:id/confirm", (req, res) => {
+  let event_id = req.params.id;
+  let member_id = global.shared.abs_member;
+  let q = `insert into Participation(member_id,event_id,status) values (${member_id},${event_id},"Registered");`;
+
+  try {
+    connection.query(q, (err, _) => {
+      if (err) throw err;
+      res.redirect(`/currentevents/${event_id}/details`);
+    });
+  } catch (error) {
+    console.log(error);
+  }
 });
 
 //route to create event page
@@ -92,14 +118,21 @@ eventRouter.post("/currentevents", (req, res) => {
 
 eventRouter.get("/currentevents/:id/details", (req, res) => {
   let q = `select * from Event where event_id = ${req.params.id};`;
+  let q2 = `select * from Participation where event_id = ${req.params.id} and member_id = ${global.shared.abs_member};`;
   try {
     connection.query(q, (err, events) => {
       if (err) throw err;
-      res.render("home/event/eventDetails.ejs", {
-        event: events[0],
-        admin: shared.admin,
-        member_status: shared.member_status,
-      });
+      try {
+        connection.query(q2, (err2, participation) => {
+          if (err2) throw err2;
+          global.shared.participated = participation[0]?.status;
+          res.render("home/event/eventDetails.ejs", {
+            event: events[0],
+          });
+        });
+      } catch (error2) {
+        console.log(error2);
+      }
     });
   } catch (error) {
     console.log(error);

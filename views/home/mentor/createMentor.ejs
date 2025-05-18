@@ -12,7 +12,12 @@
 
     <div class="row justify-content-center">
       <div class="col-md-8 col-lg-6">
-        <form action="/mentors" method="POST">
+        <form
+          action="/mentors"
+          method="POST"
+          class="needs-validation"
+          novalidate
+        >
           <div class="mb-3">
             <label
               for="mentorNameStatic"
@@ -27,6 +32,7 @@
               placeholder="Enter mentor name"
               required
             />
+            <div class="invalid-feedback">Please enter mentor's name.</div>
           </div>
 
           <div class="mb-3">
@@ -43,6 +49,9 @@
               placeholder="Enter mentor qualification"
               required
             />
+            <div class="invalid-feedback">
+              Please enter mentor's qualification.
+            </div>
           </div>
           <div class="mb-3">
             <label
@@ -58,6 +67,9 @@
               placeholder="Enter mentor description"
               required
             />
+            <div class="invalid-feedback">
+              Please enter mentor's description.
+            </div>
           </div>
 
           <div class="mb-4">
@@ -74,6 +86,7 @@
               placeholder="Enter mentor email"
               required
             />
+            <div class="invalid-feedback">Please enter mentor's email.</div>
           </div>
 
           <div class="d-grid">

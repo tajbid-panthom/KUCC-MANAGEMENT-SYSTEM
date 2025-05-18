@@ -45,18 +45,39 @@
                 <%=event.event_date.toLocaleDateString() %> ,
                 <%=event.event_time %>
               </p>
-              <% if(global.shared.member_status==="active"){ %>
-              <a
-                href="/currentevents/registration"
-                class="btn btn-info text-white w-100 py-2 fw-medium"
-                style="
-                  --bs-btn-bg: #00c3ff;
-                  --bs-btn-border-color: #00c3ff;
-                  --bs-btn-hover-bg: #00a8e0;
-                "
-                >Book now</a
+              <% if(global.shared.member_status==="active" &&
+              global.shared.participated!=="Registered"){ %>
+              <form
+                action="/currentevents/<%=event.event_id %>/registration"
+                method="GET"
               >
-              <% } %>
+                <button
+                  type="submit"
+                  class="btn btn-info text-white w-100 py-2 fw-medium"
+                  style="
+                    --bs-btn-bg: #00c3ff;
+                    --bs-btn-border-color: #00c3ff;
+                    --bs-btn-hover-bg: #00a8e0;
+                  "
+                >
+                  Book now
+                </button>
+              </form>
+
+              <% }else if (global.shared.participated==="Registered"){ %>
+              <button
+                type="button"
+                class="btn btn-info text-white w-100 py-2 fw-medium"
+                disabled
+                style="
+                  --bs-btn-bg: #01556e;
+                  --bs-btn-border-color: #01556e;
+                  --bs-btn-hover-bg: #01556e;
+                "
+              >
+                Booked
+              </button>
+              <%} %>
             </div>
           </div>
         </div>
@@ -133,20 +154,61 @@
     <% if(global.shared.admin){ %>
     <div class="row mt-5 pt-4 border-top border-white border-opacity-25">
       <div class="col-12 text-center">
-        <form
-          action="/events/<%=event.event_id%>?_method=DELETE"
-          method="POST"
-          style="display: inline-block"
-          class="me-3"
-          onsubmit="return confirm('Are you sure?');"
-        >
+        <div class="d-inline-block">
           <button
-            type="submit"
-            class="btn btn-dark rounded px-5 py-2 fw-medium"
+            type="button"
+            class="btn btn-dark btn-lg px-5 rounded"
+            data-bs-toggle="modal"
+            data-bs-target="#deleteEvent-<%=event.event_id %>"
           >
             Remove
           </button>
-        </form>
+
+          <div
+            class="modal fade"
+            id="deleteEvent-<%=event.event_id %>"
+            tabindex="-1"
+          >
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Confirm</h5>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                  ></button>
+                </div>
+                <div class="modal-body">
+                  <p>
+                    Are you sure you want to remove
+                    <strong><%= event.title %> </strong>?
+                  </p>
+                  <p class="text-danger">This action cannot be undone.</p>
+                </div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal"
+                  >
+                    Cancel
+                  </button>
+
+                  <form
+                    action="/events/<%=event.event_id%>?_method=DELETE"
+                    method="POST"
+                    class="d-inline"
+                  >
+                    <button type="submit" class="btn btn-danger">
+                      Confirm Remove
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
         <a
           href="/currentevents/<%=event.event_id%>/details/edit"
           class="btn btn-info rounded text-white px-5 py-2 fw-medium border border-white"

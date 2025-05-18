@@ -14,12 +14,12 @@
 
     <div class="row justify-content-center">
       <div class="col-md-8 col-lg-6">
-        <form action="/registration/confirm" method="POST">
+        <form action="/registration/<%=event_id %>/confirm" method="POST">
           <div class="mb-3">
             <input
               type="text"
               class="form-control form-control-lg rounded text-center"
-              value="MD TAJBID HOSSAIN BAPPI"
+              value="<%=member.name %>"
               readonly
               style="background-color: white; border: none; color: #333"
             />
@@ -29,7 +29,7 @@
             <input
               type="text"
               class="form-control form-control-lg rounded text-center"
-              value="230235"
+              value="<%=member.student_id %>"
               readonly
               style="background-color: white; border: none; color: #333"
             />
@@ -39,7 +39,7 @@
             <input
               type="text"
               class="form-control form-control-lg rounded text-center"
-              value="Computer Science & Engineering Discipline"
+              value="<%=member.dept_name %>"
               readonly
               style="background-color: white; border: none; color: #333"
             />
@@ -49,7 +49,7 @@
             <input
               type="tel"
               class="form-control form-control-lg rounded text-center"
-              value="01738166031"
+              value="<%=member.phone_number %>"
               readonly
               style="background-color: white; border: none; color: #333"
             />
@@ -59,7 +59,7 @@
             <input
               type="email"
               class="form-control form-control-lg rounded text-center"
-              value="230235@ku.ac.bd"
+              value="<%=member.email %>"
               readonly
               style="background-color: white; border: none; color: #333"
             />
@@ -69,7 +69,7 @@
             <input
               type="text"
               class="form-control form-control-lg rounded text-center"
-              value="Jashore,Khulna"
+              value="<%=member.hometown %>"
               readonly
               style="background-color: white; border: none; color: #333"
             />
