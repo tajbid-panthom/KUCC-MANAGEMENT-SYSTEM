@@ -10,7 +10,7 @@
     "build:css": "npx tailwindcss -i ./public/css/input.css -o ./public/css/styles.css --minify"
   },
   "keywords": [],
-  "author": "Md Tajbid Hossain Bappi(230235)",
+  "author": "Md Tajbid Hossain Bappi(230235), Sajal Mondal(230205), Md Abdullah Al Mahin(230210)",
   "license": "ISC",
   "dependencies": {
     "ejs": "^3.1.10",
