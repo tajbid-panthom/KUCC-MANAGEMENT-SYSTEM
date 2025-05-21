@@ -227,21 +227,3 @@ body {
 .cursor-pointer {
   cursor: pointer !important;
 }
-
-.sajal2 {
-  /* position: relative; */
-}
-.sajal {
-  /* position: absolute ; */
-  /* right: 200px ; */
-  /* bottom: -500px; */
-  /* width: 400px !important;
-  height: 200px !important;
-  text-align: center !important;
-  align-self: center; */
-}
-.mahin {
-  /* color: green; */
-  /* background-color: red; */
-  /* font-size: 96px; */
-}
